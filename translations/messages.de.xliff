@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+        <body>
+  
+<!--|| SITE ||-->   
+            <trans-unit id="_site.title">           
+                <source>site.title</source>
+                <target>Unicorn Blog</target>
+            </trans-unit>
+            <trans-unit id="_site.tagline">            
+                <source>site.tagline</source>
+                <target>Secure- International - Future Proof!</target>
+            </trans-unit>
+            <trans-unit id="_site.name">           
+                <source>site.name</source>
+                <target>Unicorn</target>
+            </trans-unit>
+  
+<!--|| NAV ||-->
+            <trans-unit id="_nav.home">
+                <source>nav.home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="_nav.about">
+                <source>nav.about</source>
+                <target>Über Uns</target>
+            </trans-unit>
+            <trans-unit id="_nav.contact">
+                <source>nav.contact</source>
+                <target>Kontakt</target>
+            </trans-unit>
+             <trans-unit id="_nav.search">
+                <source>nav.search</source>
+                <target>Suche</target>
+            </trans-unit>
+ 
+<!--|| LOCALE ||-->
+            <trans-unit id="_locale.english">            
+                <source>locale.english</source>
+                <target>Englisch</target>
+            </trans-unit>
+            <trans-unit id="_locale.german">            
+                <source>locale.german</source>
+                <target>Deutsch</target>
+            </trans-unit>
+  
+<!--|| FOOTER ||-->
+            <trans-unit id="_footer.copy">            
+                <source>footer.copy</source>
+                <target>Unicorn Blog</target>
+            </trans-unit>
+            <trans-unit id="_footer.mail.username">            
+                <source>footer.mail.username</source>
+                <target>hyperclock</target>
+            </trans-unit>
+            <trans-unit id="_footer.mail.domain">            
+                <source>footer.mail.domain</source>
+                <target>unicorn-blog.org</target>
+            </trans-unit>
+            <trans-unit id="_footer.mail.title">            
+                <source>footer.mail.title</source>
+                <target>JMColeman (hyperclock)</target>
+            </trans-unit>
+  
+<!--|| LEGAL ||-->
+            <trans-unit id="_legal.terms">            
+                <source>legal.terms</source>
+                <target>Nutzungsbedingungen</target>
+            </trans-unit>
+            <trans-unit id="_legal.disclaimer">            
+                <source>legal.disclaimer</source>
+                <target>Haftungsausschluss</target>
+            </trans-unit> 
+            <trans-unit id="_legal.privacy">            
+                <source>legal.privacy</source>
+                <target>Datenschutzerklärung</target>
+            </trans-unit> 
+            <trans-unit id="_legal.trademarks">            
+                <source>legal.trademarks</source>
+                <target>Marken und Lizenzen</target>
+            </trans-unit>
+            <trans-unit id="_legal.imprint">            
+                <source>legal.imprint</source>
+                <target>Impressum</target>
+            </trans-unit>
+  
+<!--|| FORM ||-->
+            <trans-unit id="_form.name">            
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="_form.email">            
+                <source>Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="_form.subject">            
+                <source>Subject</source>
+                <target>Betreff</target>
+            </trans-unit>     
+            <trans-unit id="_form.body">            
+                <source>Body</source>
+                <target>Body</target>
+            </trans-unit>
+   
+<!--|| GENERIC ||-->
+             <trans-unit id="_generic.user">            
+                <source>User</source>
+                <target>Benutzer</target>
+            </trans-unit>     
+            <trans-unit id="_gerneric.comment">            
+                <source>Comment</source>
+                <target>Kommentar</target>
+            </trans-unit> 
+            <trans-unit id="_gerneric.captcha">            
+                <source>Captcha</source>
+                <target>Captcha</target>
+            </trans-unit>
+              
+        </body>
+    </file>
+</xliff>
