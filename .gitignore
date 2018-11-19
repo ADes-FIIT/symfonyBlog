@@ -16,3 +16,4 @@
 /composer.phar
 /nbproject
 /.idea
+/symfony.lock
