@@ -4,11 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
-    app.locale: 'en|de'
+    locale: en
+    app.locale: en|sk
+    app.emails.contact_email: adam.benovic@bootiq.io
 
 services:
-    App.locale_listener:
+    app.locale_listener:
         class: App\EventListener\LocaleListener
         arguments: ["%kernel.default_locale%"]
         tags:

@@ -1,0 +1,25 @@
+site.title: 'ADes Blog'
+site.tagline: Weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+site.name: 'Učím sa'
+nav.home: Domov
+nav.about: 'O mne'
+nav.contact: Kontakt
+nav.search: Vyhľadávanie
+locale.english: English
+locale.slovak: Slovensky
+footer.copy: Fooooooooter
+footer.mail.username: adam.benovic
+footer.mail.domain: bootiq.io
+footer.mail.title: Mail
+legal.terms: 'Právne informácie'
+legal.disclaimer: Hahahaha
+legal.privacy: Súkromie
+legal.trademarks: Tutututururururu
+legal.imprint: Legal
+Name: Meno
+Email: Email
+Subject: Predmet
+Body: Telo
+User: Užívateľ
+Comment: Komentár
+Captcha: Captcha

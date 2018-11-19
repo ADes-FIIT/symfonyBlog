@@ -1,0 +1,25 @@
+site.title: 'ADes Learning Blog'
+site.tagline: 'BootIQ - FIIT - self'
+site.name: 'Adam is learning now!'
+nav.home: Home
+nav.about: About
+nav.contact: Contact
+nav.search: Search
+locale.english: English
+locale.german: German
+footer.copy: 'Unicorn Blog'
+footer.mail.username: hyperclock
+footer.mail.domain: unicorn-blog.org
+footer.mail.title: ADes
+legal.terms: Terms
+legal.disclaimer: Disclaimer
+legal.privacy: 'Privacy Policy'
+legal.trademarks: 'Trademarks and Licenses'
+legal.imprint: Imprint
+Name: Name
+Email: Email
+Subject: Subject
+Body: Body
+User: User
+Comment: Comment
+Captcha: Captcha

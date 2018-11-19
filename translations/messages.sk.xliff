@@ -1,30 +1,30 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="sk" datatype="plaintext" original="file.ext">
         <body>
   
 <!--|| SITE ||-->   
             <trans-unit id="_site.title">           
                 <source>site.title</source>
-                <target>Unicorn Blog</target>
+                <target>ADes Blog</target>
             </trans-unit>
             <trans-unit id="_site.tagline">            
                 <source>site.tagline</source>
-                <target>Secure- International - Future Proof!</target>
+                <target>Weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</target>
             </trans-unit>
             <trans-unit id="_site.name">           
                 <source>site.name</source>
-                <target>Unicorn</target>
+                <target>Učím sa</target>
             </trans-unit>
   
 <!--|| NAV ||-->
             <trans-unit id="_nav.home">
                 <source>nav.home</source>
-                <target>Home</target>
+                <target>Domov</target>
             </trans-unit>
             <trans-unit id="_nav.about">
                 <source>nav.about</source>
-                <target>Über Uns</target>
+                <target>O mne</target>
             </trans-unit>
             <trans-unit id="_nav.contact">
                 <source>nav.contact</source>
@@ -32,63 +32,63 @@
             </trans-unit>
              <trans-unit id="_nav.search">
                 <source>nav.search</source>
-                <target>Suche</target>
+                <target>Vyhľadávanie</target>
             </trans-unit>
  
 <!--|| LOCALE ||-->
             <trans-unit id="_locale.english">            
                 <source>locale.english</source>
-                <target>Englisch</target>
+                <target>English</target>
             </trans-unit>
-            <trans-unit id="_locale.german">            
-                <source>locale.german</source>
-                <target>Deutsch</target>
+            <trans-unit id="_locale.slovak">
+                <source>locale.slovak</source>
+                <target>Slovensky</target>
             </trans-unit>
   
 <!--|| FOOTER ||-->
             <trans-unit id="_footer.copy">            
                 <source>footer.copy</source>
-                <target>Unicorn Blog</target>
+                <target>Fooooooooter</target>
             </trans-unit>
             <trans-unit id="_footer.mail.username">            
                 <source>footer.mail.username</source>
-                <target>hyperclock</target>
+                <target>adam.benovic</target>
             </trans-unit>
             <trans-unit id="_footer.mail.domain">            
                 <source>footer.mail.domain</source>
-                <target>unicorn-blog.org</target>
+                <target>bootiq.io</target>
             </trans-unit>
             <trans-unit id="_footer.mail.title">            
                 <source>footer.mail.title</source>
-                <target>JMColeman (hyperclock)</target>
+                <target>Mail</target>
             </trans-unit>
   
 <!--|| LEGAL ||-->
             <trans-unit id="_legal.terms">            
                 <source>legal.terms</source>
-                <target>Nutzungsbedingungen</target>
+                <target>Právne informácie</target>
             </trans-unit>
             <trans-unit id="_legal.disclaimer">            
                 <source>legal.disclaimer</source>
-                <target>Haftungsausschluss</target>
+                <target>Hahahaha</target>
             </trans-unit> 
             <trans-unit id="_legal.privacy">            
                 <source>legal.privacy</source>
-                <target>Datenschutzerklärung</target>
+                <target>Súkromie</target>
             </trans-unit> 
             <trans-unit id="_legal.trademarks">            
                 <source>legal.trademarks</source>
-                <target>Marken und Lizenzen</target>
+                <target>Tutututururururu</target>
             </trans-unit>
             <trans-unit id="_legal.imprint">            
                 <source>legal.imprint</source>
-                <target>Impressum</target>
+                <target>Legal</target>
             </trans-unit>
   
 <!--|| FORM ||-->
             <trans-unit id="_form.name">            
                 <source>Name</source>
-                <target>Name</target>
+                <target>Meno</target>
             </trans-unit>
             <trans-unit id="_form.email">            
                 <source>Email</source>
@@ -96,25 +96,55 @@
             </trans-unit>
             <trans-unit id="_form.subject">            
                 <source>Subject</source>
-                <target>Betreff</target>
+                <target>Predmet</target>
             </trans-unit>     
             <trans-unit id="_form.body">            
                 <source>Body</source>
-                <target>Body</target>
+                <target>Telo</target>
             </trans-unit>
    
 <!--|| GENERIC ||-->
              <trans-unit id="_generic.user">            
                 <source>User</source>
-                <target>Benutzer</target>
+                <target>Užívateľ</target>
             </trans-unit>     
             <trans-unit id="_gerneric.comment">            
                 <source>Comment</source>
-                <target>Kommentar</target>
+                <target>Komentár</target>
             </trans-unit> 
             <trans-unit id="_gerneric.captcha">            
                 <source>Captcha</source>
                 <target>Captcha</target>
+            </trans-unit>
+
+<!--|| LOGIN (FOSU) ||-->
+            <trans-unit id="_login.login">
+              <source>login.login</source>
+              <target>Prihlásenie</target>
+            </trans-unit>
+            <trans-unit id="_login.logout">
+              <source>login.logout</source>
+              <target>Odhlásiť</target>
+            </trans-unit>
+            <trans-unit id="_login.register">
+              <source>login.register</source>
+              <target>Registrovať</target>
+            </trans-unit>
+            <trans-unit id="_login.title">
+              <source>login.title</source>
+              <target>Prihlásiť sa</target>
+            </trans-unit>
+            <trans-unit id="_login.register.title">
+              <source>login.register.title</source>
+              <target>Registrovať nový účet</target>
+            </trans-unit>
+            <trans-unit id="_login.forgot.password">
+              <source>login.forgot.password</source>
+              <target>Zabudnuté heslo</target>
+            </trans-unit>
+            <trans-unit id="_login.submit">
+              <source>login.submit</source>
+              <target>Odoslať</target>
             </trans-unit>
               
         </body>

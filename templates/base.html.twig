@@ -42,8 +42,8 @@
           </a>
         </div>
         <div class="col-xs-3 col-sm-1 col-md-1">
-          <a href="/switchgerman" class="thumbnail">
-            <img src="{{ asset('images/flags/de.png') }}" alt="german">
+          <a href="/switchslovak" class="thumbnail">
+            <img src="{{ asset('images/flags/sk.png') }}" alt="slovak">
           </a>
         </div>
       </div>
@@ -72,9 +72,7 @@
  
     {% block navbar %}
       <nav class="navbar navbar-default" role="navigation">
- 
         <div class="container-fluid">
- 
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-simples">
               <span class="sr-only">Toggle navigation</span>
@@ -101,11 +99,25 @@
               </li>
               <li>
                 <a href="{{ path('search') }}" style="color:#337ab7">
-                  {{ 'nav.search'|trans }}
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span> {% trans %}nav.search{% endtrans %}
                 </a>
               </li>
             </ul>
- 
+            <!--| Login/Logout Start-needed |-->
+            <ul class="nav navbar-nav navbar-right">
+              <!--| Login/Logout End-needed |-->
+
+              <!--| Login/Logout Start |-->
+              <li class="dropdown pull-right"><a href="{{ path('fos_user_registration_register') }}" style="color:#15609f"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span> {% trans %}login.register{% endtrans %}</a></li>
+
+                {% if app.user %}
+                  <li class="dropdown pull-right"><a href="{{ path('fos_user_security_logout') }}" style="color:#15609f"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {% trans %}login.logout{% endtrans %}</a></li>
+                {% else %}
+                  <li class="dropdown pull-right"><a href="{{ path('fos_user_security_login') }}" style="color:#15609f"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans %}login.login{% endtrans %}</a></li>
+                {% endif %}
+
+            </ul>
+            <!--| Login/Logout End |-->
           </div>
         </div>
       </nav>

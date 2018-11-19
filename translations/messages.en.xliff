@@ -4,20 +4,20 @@
         <body>
   
 <!--|| SITE ||-->   
-            <trans-unit id="_site.title">           
+            <trans-unit id="_site.title">
                 <source>site.title</source>
-                <target>Unicorn Blog</target>
+                <target>ADes Learning Blog</target>
             </trans-unit>
-            <trans-unit id="_site.tagline">            
+            <trans-unit id="_site.tagline">
                 <source>site.tagline</source>
-                <target>Secure- International - Future Proof!</target>
+                <target>BootIQ - FIIT - self</target>
             </trans-unit>
-            <trans-unit id="_site.name">           
+            <trans-unit id="_site.name">
                 <source>site.name</source>
-                <target>Unicorn</target>
+                <target>Adam is learning now!</target>
             </trans-unit>
-  
-<!--|| NAV ||-->        
+
+<!--|| NAV ||-->
             <trans-unit id="_nav.home">
                 <source>nav.home</source>
                 <target>Home</target>
@@ -34,89 +34,119 @@
                 <source>nav.search</source>
                 <target>Search</target>
             </trans-unit>
-  
+
 <!--|| LOCALE ||-->
-            <trans-unit id="_locale.english">            
+            <trans-unit id="_locale.english">
                 <source>locale.english</source>
                 <target>English</target>
             </trans-unit>
-            <trans-unit id="_locale.german">            
+            <trans-unit id="_locale.german">
                 <source>locale.german</source>
                 <target>German</target>
             </trans-unit>
-  
+
 <!--|| FOOTER ||-->
-            <trans-unit id="_footer.copy">            
+            <trans-unit id="_footer.copy">
                 <source>footer.copy</source>
                 <target>Unicorn Blog</target>
             </trans-unit>
-            <trans-unit id="_footer.mail.username">            
+            <trans-unit id="_footer.mail.username">
                 <source>footer.mail.username</source>
                 <target>hyperclock</target>
             </trans-unit>
-            <trans-unit id="_footer.mail.domain">            
+            <trans-unit id="_footer.mail.domain">
                 <source>footer.mail.domain</source>
                 <target>unicorn-blog.org</target>
             </trans-unit>
-            <trans-unit id="_footer.mail.title">            
+            <trans-unit id="_footer.mail.title">
                 <source>footer.mail.title</source>
-                <target>JMColeman (hyperclock)</target>
+                <target>ADes</target>
             </trans-unit>
-  
+
 <!--|| LEGAL ||-->
-            <trans-unit id="_legal.terms">            
+            <trans-unit id="_legal.terms">
                 <source>legal.terms</source>
                 <target>Terms</target>
             </trans-unit>
-            <trans-unit id="_legal.disclaimer">            
+            <trans-unit id="_legal.disclaimer">
                 <source>legal.disclaimer</source>
                 <target>Disclaimer</target>
-            </trans-unit> 
-            <trans-unit id="_legal.privacy">            
+            </trans-unit>
+            <trans-unit id="_legal.privacy">
                 <source>legal.privacy</source>
                 <target>Privacy Policy</target>
-            </trans-unit> 
-            <trans-unit id="_legal.trademarks">            
+            </trans-unit>
+            <trans-unit id="_legal.trademarks">
                 <source>legal.trademarks</source>
                 <target>Trademarks and Licenses</target>
             </trans-unit>
-            <trans-unit id="_legal.imprint">            
+            <trans-unit id="_legal.imprint">
                 <source>legal.imprint</source>
                 <target>Imprint</target>
             </trans-unit>
-  
+
 <!--|| FORM ||-->
-            <trans-unit id="_form.name">            
+            <trans-unit id="_form.name">
                 <source>Name</source>
                 <target>Name</target>
             </trans-unit>
-            <trans-unit id="_form.email">            
+            <trans-unit id="_form.email">
                 <source>Email</source>
                 <target>Email</target>
             </trans-unit>
-            <trans-unit id="_form.subject">            
+            <trans-unit id="_form.subject">
                 <source>Subject</source>
                 <target>Subject</target>
-            </trans-unit>     
-            <trans-unit id="_form.body">            
+            </trans-unit>
+            <trans-unit id="_form.body">
                 <source>Body</source>
                 <target>Body</target>
-            </trans-unit>   
-  
+            </trans-unit>
+
 <!--|| GENERIC ||-->
-            <trans-unit id="_generic.user">            
+            <trans-unit id="_generic.user">
                 <source>User</source>
                 <target>User</target>
-            </trans-unit>     
-            <trans-unit id="_gerneric.comment">            
+            </trans-unit>
+            <trans-unit id="_gerneric.comment">
                 <source>Comment</source>
                 <target>Comment</target>
-            </trans-unit> 
-            <trans-unit id="_gerneric.captcha">            
+            </trans-unit>
+            <trans-unit id="_gerneric.captcha">
                 <source>Captcha</source>
                 <target>Captcha</target>
             </trans-unit>
-              
+
+<!--|| LOGIN (FOSU) ||-->
+            <trans-unit id="_login.login">
+              <source>login.login</source>
+              <target>Login</target>
+            </trans-unit>
+            <trans-unit id="_login.logout">
+              <source>login.logout</source>
+              <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="_login.register">
+              <source>login.register</source>
+              <target>Register</target>
+            </trans-unit>
+            <trans-unit id="_login.title">
+              <source>login.title</source>
+              <target>Login to Your Account</target>
+            </trans-unit>
+            <trans-unit id="_login.register.title">
+              <source>login.register.title</source>
+              <target>Register a New Account</target>
+            </trans-unit>
+            <trans-unit id="_login.forgot.password">
+              <source>login.forgot.password</source>
+              <target>Forgot Password</target>
+            </trans-unit>
+            <trans-unit id="_login.submit">
+              <source>login.submit</source>
+              <target>Submit</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

@@ -1,6 +1,7 @@
 {# templates/layout.html.twig #}
 {% extends 'base.html.twig' %}
- 
+{# .. #}
+
 {% block sidebar %}
-    Sidebar content
+    {{ render(controller( 'App\\Controller\\HomePageController::sidebar' )) }}
 {% endblock %}

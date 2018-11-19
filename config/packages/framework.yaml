@@ -28,3 +28,17 @@ framework:
 
         # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
         #app: cache.adapter.apcu
+    templating:
+        engines: ['twig']
+
+fos_user:
+  db_driver: orm
+  firewall_name: main
+  user_class: App\Entity\User
+  from_email:
+    address:     adam.benovic@bootiq.io
+    sender_name:    ADes Blog
+  registration:
+    confirmation:
+      enabled:    true
+      template:   FOSUserBundle:Registration:email.txt.twig
