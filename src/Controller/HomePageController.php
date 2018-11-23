@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\BlogRepository;
   
 class HomePageController extends Controller
 {
@@ -16,7 +17,29 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        return $this->render('homepage/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('App:Blog');
+        $blogs = $repo->loadBlogs();
+
+        if (!$blogs) {
+            throw $this->createNotFoundException('Unable to find Blog post/s.');
+        }
+
+        foreach($blogs as $blog) {
+            $text = $blog->getBlog();
+            $id = $blog->getId();
+            if(strlen($text) > 50) {
+                $text = substr($text, 0, 50);
+                $text .= "...";
+                $blog->setBlog($text);
+            }
+        }
+
+
+        return $this->render('homepage/index.html.twig', [
+            'blogs'      => $blogs,/*,
+                'comments'  => $comments*/
+        ]);
     }
   
     /**

@@ -34,6 +34,24 @@
                 <source>nav.search</source>
                 <target>Vyhľadávanie</target>
             </trans-unit>
+            <trans-unit id="_nav.add">
+                <source>nav.add</source>
+                <target>Pridať príspevok</target>
+            </trans-unit>
+
+<!--|| ADD BLOG ||-->
+            <trans-unit id="_add.title">
+                <source>add.title</source>
+                <target>Zadajte titulok</target>
+            </trans-unit>
+            <trans-unit id="_add.body">
+                <source>add.body</source>
+                <target>Napíšte príspevok</target>
+            </trans-unit>
+            <trans-unit id="_add.send">
+                <source>add.send</source>
+                <target>Odoslať príspevok</target>
+            </trans-unit>
  
 <!--|| LOCALE ||-->
             <trans-unit id="_locale.english">            

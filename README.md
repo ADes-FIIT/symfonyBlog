@@ -12,6 +12,8 @@ https://www.mysql.com/downloads/
 ### Useful commands
 
 ```
-translations update: php bin/console translation:update --force en
-clear cache: php bin/console cache:clear
+translations update : 	php bin/console translation:update --force en
+clear cache : 			php bin/console cache:clear
+new db migration : 		php bin/console make:migration
+db migrate :			php bin/console doctrine:migrations:migrate
 ```

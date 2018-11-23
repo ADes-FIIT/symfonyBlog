@@ -2,5 +2,19 @@
 {% extends 'layout.html.twig' %}
  
 {% block body %}
-    Blog homepage
+    {% for blog in blogs %}
+        <article class="blog">
+            <header>
+                <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+                <h2>{{ blog.title }}</h2>
+            </header>
+
+            <div>
+                <p>
+                    {{ blog.blog }}
+                    <a href="{{ blog.id }}">Read more</a>
+                </p>
+            </div>
+        </article>
+    {% endfor %}
 {% endblock %}

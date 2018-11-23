@@ -23,3 +23,15 @@ Body: Telo
 User: Užívateľ
 Comment: Komentár
 Captcha: Captcha
+nav.add: 'Pridať príspevok'
+login.login: Prihlásenie
+login.logout: Odhlásiť
+login.register: Registrovať
+login.title: 'Prihlásiť sa'
+login.register.title: 'Registrovať nový účet'
+login.forgot.password: 'Zabudnuté heslo'
+login.submit: Odoslať
+admin.panel: __admin.panel
+add.title: 'Zadajte titulok'
+add.body: 'Napíšte príspevok'
+add.send: 'Odoslať príspevok'

@@ -24,7 +24,7 @@
  
       <!-- FontAweSome min CSS -->
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- 
+
       <!-- Our CSS -->
       <link href="{{ asset('css/screen.css') }}" type="text/css" rel="stylesheet"/>
     {% endblock stylesheets %}
@@ -102,10 +102,28 @@
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span> {% trans %}nav.search{% endtrans %}
                 </a>
               </li>
+              {% if app.user %}
+                <li>
+                  <a href="{{ path('add') }}" style="color:#337ab7">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}nav.add{% endtrans %}
+                  </a>
+                </li>
+              {% endif %}
             </ul>
             <!--| Login/Logout Start-needed |-->
             <ul class="nav navbar-nav navbar-right">
               <!--| Login/Logout End-needed |-->
+
+              <!--|| BEGIN ADMIN LINK ||-->
+                {% if is_granted('ROLE_ADMIN') -%}
+                  <li class="dropdown">
+
+                  <li class="dropdown">
+                    <a href="{{ path('admin') }}" style="color:#15609f"><span class="glyphicon glyphicon-king" aria-hidden="true"></span> {{ 'admin.panel'|trans }}</a>
+                  </li>
+                  </li>
+                {% endif %}
+              <!--|| END ADMIN LINK ||-->
 
               <!--| Login/Logout Start |-->
               <li class="dropdown pull-right"><a href="{{ path('fos_user_registration_register') }}" style="color:#15609f"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span> {% trans %}login.register{% endtrans %}</a></li>

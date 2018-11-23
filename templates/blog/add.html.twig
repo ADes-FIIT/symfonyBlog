@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {{ 'site.title'|trans }}
+    -
+    {{ 'nav.add'|trans }}
+{% endblock title %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+{% endblock stylesheets %}
+{% block body %}
+    <form action="{{ path('add') }}" method="POST" class="sendBlog">
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        <hr>
+        {{ form_row(form.blog) }}
+        <hr>
+        {{ form_row(form.tags) }}
+        <br>
+        {{ form_end(form) }}
+        <input type="submit" class="sendBlog" value="{{ 'add.send'|trans }}"</input>
+    </form>
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock javascripts %}

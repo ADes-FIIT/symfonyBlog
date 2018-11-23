@@ -23,3 +23,27 @@ Body: Body
 User: User
 Comment: Comment
 Captcha: Captcha
+Username: Username
+'Username canonical': 'Username canonical'
+'Email canonical': 'Email canonical'
+Enabled: Enabled
+Salt: Salt
+Password: Password
+'Last login': 'Last login'
+'Confirmation token': 'Confirmation token'
+'Password requested at': 'Password requested at'
+Roles: Roles
+0: '0'
+role.admin: Admin
+admin.panel: 'Admin Panel'
+login.login: Login
+login.logout: Logout
+login.register: Register
+login.title: 'Login to Your Account'
+login.register.title: 'Register a New Account'
+login.forgot.password: 'Forgot Password'
+login.submit: Submit
+nav.add: 'Add post'
+add.title: 'Enter title here'
+add.body: 'Enter post here'
+add.send: 'Send post'
