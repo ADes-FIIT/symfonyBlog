@@ -13,6 +13,9 @@ class Blog
 {
     public function __construct()
     {
+        $this->setTitle("<h1>Enter title here</h1>");
+        $this->setBlog("<p>Enter blog text here</p>");
+        $this->setTags("<p>Enter tags here</p>");
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }

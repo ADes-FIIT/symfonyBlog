@@ -14,7 +14,6 @@ class BlogPostFormType extends AbstractType
     {
         $builder
             ->add('title', CKEditorType::class, array(
-                'data' => '<h1>Enter title here</h1>',
                 'label' => false,
                 'inline' => true,
                 'config' => array(
@@ -22,7 +21,6 @@ class BlogPostFormType extends AbstractType
                 ),
             ))
             ->add('blog', CKEditorType::class, array(
-                'data' => '<p>Enter post text here</p>',
                 'label' => false,
                 'config' => array(
                     'format_tags' => 'h2;h3;h4;h5;h6;address;div;p',
@@ -30,7 +28,6 @@ class BlogPostFormType extends AbstractType
                 ),
             ))
             ->add('tags', CKEditorType::class, array(
-                'data' => '<p>Enter tags here</p>',
                 'label' => false,
                 'inline' => true,
                 'config' => array(

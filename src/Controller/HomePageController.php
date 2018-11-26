@@ -70,9 +70,6 @@ class HomePageController extends Controller
 
                 $this->get('session')->getFlashbag('blog-notice', 'Your contact enquiry was successfully sent. Thank you!');
 
-
-                // Redirect - This is important to prevent users re-posting
-                // the form if they refresh the page
                 return $this->redirect($this->generateUrl('contact'));
             }
         }
@@ -94,6 +91,12 @@ class HomePageController extends Controller
      */
     public function sidebar()
     {
-        return $this->render('sidebar/sidebar.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('App:Comment');
+        $comments= $repo->getCommentsForHomepage();
+
+        return $this->render('sidebar/sidebar.html.twig', array(
+            'comments' => $comments
+        ));
     }
 }

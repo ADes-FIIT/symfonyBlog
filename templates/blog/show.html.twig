@@ -16,12 +16,28 @@
             Tags: {{ blog.tags|raw }}
         </div>
     </article>
-    
+    <hr>
+    <div class="comment">
     {% if comments is defined %}
-        {% for comment in comments %}
-            <div class="comment">
 
-            </div>
+        {% for comment in comments %}
+                <time datetime="{{comment.created|date('c') }}">{{ comment.created|date('l, F j, Y, G:i:s') }}</time>
+                <h3>{{ comment.author|striptags }}</h3>
+                <p>
+                    {{ comment.comment|striptags }}
+                </p>
         {% endfor %}
+
     {% endif %}
+    </div>
+
+    <hr>
+
+    <form action="{{ path('showblog', {'pageid': pageid}) }}" method="POST" class="send">
+        <h3>{{ 'comment.add'|trans }}</h3>
+        {{ form_row(form.comment) }}
+        <br>
+        {{ form_rest(form) }}
+        <input type="submit" class="send" value="{{ 'comment.send'|trans }}"/>
+    </form>
 {% endblock %}

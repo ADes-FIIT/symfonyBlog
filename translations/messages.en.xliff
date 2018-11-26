@@ -38,6 +38,20 @@
                 <source>nav.add</source>
                 <target>Add post</target>
             </trans-unit>
+            <trans-unit id="_nav.my">
+                <source>nav.my</source>
+                <target>My posts</target>
+            </trans-unit>
+
+<!--|| SIDEBAR ||-->
+            <trans-unit id="_sidebar.announcements">
+                <source>sidebar.announcements</source>
+                <target>Announcements</target>
+            </trans-unit>
+            <trans-unit id="_sidebar.comments">
+                <source>sidebar.comments</source>
+                <target>Comments</target>
+            </trans-unit>
 
 <!--|| ADD BLOG ||-->
             <trans-unit id="_add.title">
@@ -52,6 +66,25 @@
                 <source>add.send</source>
                 <target>Send post</target>
             </trans-unit>
+
+<!--|| BLOG ||-->
+            <trans-unit id="_blog.send">
+                <source>blog.send</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="_blog.delete">
+                <source>blog.delete</source>
+                <target>Delete post</target>
+            </trans-unit>
+            <trans-unit id="_blog.edit">
+                <source>blog.edit</source>
+                <target>Edit post</target>
+            </trans-unit>
+            <trans-unit id="_blog.edit.title">
+                <source>blog.edit.title</source>
+                <target>Edit</target>
+            </trans-unit>
+
 
 <!--|| LOCALE ||-->
             <trans-unit id="_locale.english">
@@ -136,48 +169,48 @@
             </trans-unit>
             <trans-unit id="_username">
                 <source>Username</source>
-                 <target>Username</target>
+                <target>Username</target>
             </trans-unit>
             <trans-unit id="_username.canonical">
-                                        <source>Username canonical</source>
-                                        <target>Username canonical</target>
-                                    </trans-unit>
-                        <trans-unit id="_email.canonical">
-                            <source>Email canonical</source>
-                            <target>Email canonical</target>
-                        </trans-unit>
-                        <trans-unit id="_enabled">
-                            <source>Enabled</source>
-                            <target>Enabled</target>
-                        </trans-unit>
-                        <trans-unit id="_salt">
-                            <source>Salt</source>
-                            <target>Salt</target>
-                        </trans-unit>
-                        <trans-unit id="_password">
-                            <source>Password</source>
-                            <target>Password</target>
-                        </trans-unit>
-                        <trans-unit id="_last.login">
-                            <source>Last login</source>
-                            <target>Last login</target>
-                        </trans-unit>
-                        <trans-unit id="_confirmation.token">
-                            <source>Confirmation token</source>
-                            <target>Confirmation token</target>
-                        </trans-unit>
-                        <trans-unit id="_password.requested.at">
-                            <source>Password requested at</source>
-                            <target>Password requested at</target>
-                        </trans-unit>
-                        <trans-unit id="_roles">
-                            <source>Roles</source>
-                            <target>Roles</target>
-                        </trans-unit>
-                        <trans-unit id="_0">
-                            <source>0</source>
-                            <target>0</target>
-                        </trans-unit>
+                <source>Username canonical</source>
+                <target>Username canonical</target>
+            </trans-unit>
+            <trans-unit id="_email.canonical">
+                <source>Email canonical</source>
+                <target>Email canonical</target>
+            </trans-unit>
+            <trans-unit id="_enabled">
+                <source>Enabled</source>
+                <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="_salt">
+                <source>Salt</source>
+                <target>Salt</target>
+            </trans-unit>
+            <trans-unit id="_password">
+                <source>Password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="_last.login">
+                <source>Last login</source>
+                <target>Last login</target>
+            </trans-unit>
+            <trans-unit id="_confirmation.token">
+                <source>Confirmation token</source>
+                <target>Confirmation token</target>
+            </trans-unit>
+            <trans-unit id="_password.requested.at">
+                <source>Password requested at</source>
+                <target>Password requested at</target>
+            </trans-unit>
+            <trans-unit id="_roles">
+                <source>Roles</source>
+                <target>Roles</target>
+             </trans-unit>
+            <trans-unit id="_0">
+                <source>0</source>
+                <target>0</target>
+            </trans-unit>
 
 <!--|| ADMIN ||-->
             <trans-unit id="_role.admin">

@@ -26,6 +26,27 @@ class BlogRepository extends ServiceEntityRepository
         return $this->findBy(array(), array('id' => 'DESC'));
     }
 
+
+    public function findUserBlogs($username) {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.author = :val')
+            ->setParameter('val', $username)
+            ->orderBy('a.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findBlogById($id): ?Blog
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.id= :val')
+            ->setParameter('val', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Blog
     {

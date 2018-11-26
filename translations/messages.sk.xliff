@@ -38,6 +38,38 @@
                 <source>nav.add</source>
                 <target>Pridať príspevok</target>
             </trans-unit>
+            <trans-unit id="_nav.my">
+                <source>nav.my</source>
+                <target>Moje príspevky</target>
+            </trans-unit>
+
+<!--|| BLOG ||-->
+            <trans-unit id="_blog.send">
+                <source>blog.send</source>
+                <target>Uložiť</target>
+            </trans-unit>
+            <trans-unit id="_blog.delete">
+                <source>blog.delete</source>
+                <target>Vymazať príspevok</target>
+            </trans-unit>
+            <trans-unit id="_blog.edit">
+                <source>blog.edit</source>
+                <target>Editovať príspevok</target>
+            </trans-unit>
+            <trans-unit id="_blog.edit.title">
+                <source>blog.edit.title</source>
+                <target>Editovať</target>
+            </trans-unit>
+
+<!--|| SIDEBAR ||-->
+            <trans-unit id="_sidebar.announcements">
+                <source>sidebar.announcements</source>
+                <target>Oznámenia</target>
+            </trans-unit>
+            <trans-unit id="_sidebar.comments">
+                <source>sidebar.comments</source>
+                <target>Komenty</target>
+            </trans-unit>
 
 <!--|| ADD BLOG ||-->
             <trans-unit id="_add.title">
@@ -122,17 +154,71 @@
             </trans-unit>
    
 <!--|| GENERIC ||-->
-             <trans-unit id="_generic.user">            
+            <trans-unit id="_generic.user">
                 <source>User</source>
                 <target>Užívateľ</target>
-            </trans-unit>     
-            <trans-unit id="_gerneric.comment">            
+            </trans-unit>
+            <trans-unit id="_gerneric.comment">
                 <source>Comment</source>
-                <target>Komentár</target>
-            </trans-unit> 
-            <trans-unit id="_gerneric.captcha">            
+                <target>Koment</target>
+            </trans-unit>
+            <trans-unit id="_gerneric.captcha">
                 <source>Captcha</source>
                 <target>Captcha</target>
+            </trans-unit>
+            <trans-unit id="_username">
+                <source>Username</source>
+                <target>Užívateľské meno</target>
+            </trans-unit>
+            <trans-unit id="_username.canonical">
+                <source>Username canonical</source>
+                <target>Užívateľské meno canonical</target>
+            </trans-unit>
+            <trans-unit id="_email.canonical">
+                <source>Email canonical</source>
+                <target>Email canonical</target>
+            </trans-unit>
+            <trans-unit id="_enabled">
+                <source>Enabled</source>
+                <target>Aktívny</target>
+            </trans-unit>
+            <trans-unit id="_salt">
+                <source>Salt</source>
+                <target>Soľ</target>
+            </trans-unit>
+            <trans-unit id="_password">
+                <source>Password</source>
+                <target>Heslo</target>
+            </trans-unit>
+            <trans-unit id="_last.login">
+                <source>Last login</source>
+                <target>Posledné prihlásenie</target>
+            </trans-unit>
+            <trans-unit id="_confirmation.token">
+                <source>Confirmation token</source>
+                <target>Potvrdzujúci token</target>
+            </trans-unit>
+            <trans-unit id="_password.requested.at">
+                <source>Password requested at</source>
+                <target>Zmena hesla vyžiadaná na</target>
+            </trans-unit>
+            <trans-unit id="_roles">
+                <source>Roles</source>
+                <target>Role</target>
+             </trans-unit>
+            <trans-unit id="_0">
+                <source>0</source>
+                <target>0</target>
+            </trans-unit>
+
+<!--|| ADMIN ||-->
+            <trans-unit id="_role.admin">
+                <source>role.admin</source>
+                <target>Administrátor</target>
+            </trans-unit>
+            <trans-unit id="_admin.panel">
+                <source>admin.panel</source>
+                <target>Administrátorský panel</target>
             </trans-unit>
 
 <!--|| LOGIN (FOSU) ||-->

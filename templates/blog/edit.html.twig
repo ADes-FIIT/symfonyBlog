@@ -3,11 +3,11 @@
 {% block title %}
     {{ 'site.title'|trans }}
     -
-    {{ 'nav.add'|trans }}
+    {{ 'blog.edit.title'|trans }}
 {% endblock title %}
 
 {% block body %}
-    <form action="{{ path('add') }}" method="POST" class="send">
+    <form action="{{ path('editmypost', {'id':blog.id}) }}" method="POST" class="send">
         {{ form_row(form.title) }}
         <hr>
         {{ form_row(form.blog) }}
@@ -15,7 +15,7 @@
         {{ form_row(form.tags) }}
         <br>
         {{ form_rest(form) }}
-        <input type="submit" class="send" value="{{ 'add.send'|trans }}"/>
+        <input type="submit" class="send" value="{{ 'blog.send'|trans }}"/>
     </form>
 {% endblock body %}
 

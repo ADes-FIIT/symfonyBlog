@@ -2,17 +2,23 @@
 
 <section class="section">
     <header>
-        <h3>Tag Cloud</h3>
+        <h3>{{ 'sidebar.announcements'|trans }}</h3>
     </header>
-    <p class="tags">
+    <p class="announcements">
 
     </p>
 </section>
 
 <section class="section">
     <header>
-        <h3>Latest Comments</h3>
+        <h3>{{ 'sidebar.comments'|trans }}</h3>
     </header>
-
-    <p>There are no recent comments</p>
+    {% for comment in comments %}
+        <p>
+            <time datetime="{{comment.created|date('c')|trans }}">{{ comment.created|date('l, F j, Y, G:i:s')|trans }}</time>
+            {{ comment.author }}
+            <br>
+            {{ comment.comment }}
+        </p>
+    {% endfor %}
 </section>
