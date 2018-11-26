@@ -21,7 +21,7 @@ Email: Email
 Subject: Predmet
 Body: Telo
 User: Užívateľ
-Comment: Komentár
+Comment: Koment
 Captcha: Captcha
 nav.add: 'Pridať príspevok'
 login.login: Prihlásenie
@@ -31,7 +31,29 @@ login.title: 'Prihlásiť sa'
 login.register.title: 'Registrovať nový účet'
 login.forgot.password: 'Zabudnuté heslo'
 login.submit: Odoslať
-admin.panel: __admin.panel
+admin.panel: 'Administrátorské nastavenia'
 add.title: 'Zadajte titulok'
 add.body: 'Napíšte príspevok'
 add.send: 'Odoslať príspevok'
+nav.my: 'Moje príspevky'
+blog.send: Uložiť
+blog.delete: 'Vymazať príspevok'
+blog.edit: 'Editovať príspevok'
+blog.edit.title: Editovať
+sidebar.announcements: Oznámenia
+sidebar.comments: Komenty
+Username: 'Užívateľské meno'
+'Username canonical': 'Užívateľské meno canonical'
+'Email canonical': 'Email canonical'
+Enabled: Aktívny
+Salt: Soľ
+Password: Heslo
+'Last login': 'Posledné prihlásenie'
+'Confirmation token': 'Potvrdzujúci token'
+'Password requested at': 'Zmena hesla vyžiadaná na'
+Roles: Role
+0: '0'
+role.admin: Administrátor
+blog.none: __blog.none
+comment.add: 'Pridajte komentár'
+comment.send: Komentovať

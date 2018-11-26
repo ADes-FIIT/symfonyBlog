@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
@@ -30,9 +29,9 @@ class HomePageController extends Controller
             $id = $blog->getId();
             if(strlen($text) > 50) {
                 $text = substr($text, 0, 50);
-                $text .= "...";
-                $blog->setBlog($text);
             }
+            $text .= "...";
+            $blog->setBlog($text);
         }
 
         return $this->render('homepage/index.html.twig', [
@@ -50,7 +49,6 @@ class HomePageController extends Controller
 
     /**
      * @Route("/contact", name="contact")
-     * @Method("GET|POST")
      */
     public function contact(Request $request)
     {

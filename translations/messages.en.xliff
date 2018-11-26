@@ -67,6 +67,17 @@
                 <target>Send post</target>
             </trans-unit>
 
+<!--|| COMMENT ||-->
+            <trans-unit id="_comment.send">
+                <source>comment.send</source>
+                <target>Comment</target>
+            </trans-unit>
+            <trans-unit id="_comment.add">
+                <source>comment.add</source>
+                <target>Add comment</target>
+            </trans-unit>
+
+
 <!--|| BLOG ||-->
             <trans-unit id="_blog.send">
                 <source>blog.send</source>
@@ -251,6 +262,19 @@
               <source>login.submit</source>
               <target>Submit</target>
             </trans-unit>
+            <trans-unit id="__security.login.username">
+              <source>__security.login.username</source>
+              <target>Username</target>
+            </trans-unit>
+            <trans-unit id="_security.login.password">
+              <source>__security.login.password</source>
+              <target>Password</target>
+            </trans-unit>
+            <trans-unit id="_security.login.remember_me">
+              <source>__security.login.remember_me</source>
+              <target>Remember me</target>
+            </trans-unit>
+
 
         </body>
     </file>

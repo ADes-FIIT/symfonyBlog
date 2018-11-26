@@ -61,6 +61,17 @@
                 <target>Editovať</target>
             </trans-unit>
 
+<!--|| COMMENT ||-->
+            <trans-unit id="_comment.send">
+                <source>comment.send</source>
+                <target>Komentovať</target>
+            </trans-unit>
+            <trans-unit id="_comment.add">
+                <source>comment.add</source>
+                <target>Pridajte komentár</target>
+            </trans-unit>
+
+
 <!--|| SIDEBAR ||-->
             <trans-unit id="_sidebar.announcements">
                 <source>sidebar.announcements</source>
@@ -218,7 +229,7 @@
             </trans-unit>
             <trans-unit id="_admin.panel">
                 <source>admin.panel</source>
-                <target>Administrátorský panel</target>
+                <target>Administrátorské nastavenia</target>
             </trans-unit>
 
 <!--|| LOGIN (FOSU) ||-->

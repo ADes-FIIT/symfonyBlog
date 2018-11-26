@@ -13,8 +13,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-
 
 /**
  * Blog controller.
@@ -23,7 +21,6 @@ class BlogController extends Controller
 {
     /**
      * @Route("/{pageid}", name="showblog", requirements={"pageid"="\d+"})
-     * @Method("GET|POST")
      */
     public function show(Request $request, $pageid)
     {
@@ -72,7 +69,6 @@ class BlogController extends Controller
 
     /**
      * @Route("/add", name="add")
-     * @Method("GET|POST")
      */
     public function post(Request $request)
     {
@@ -127,7 +123,6 @@ class BlogController extends Controller
 
     /**
      * @Route("/edit/{id}", name="editmypost", requirements={"id"="\d+"})
-     * @Method("GET|POST")
      */
     public function editMyPost(Request $request, $id)
     {

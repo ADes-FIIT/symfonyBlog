@@ -47,3 +47,22 @@ nav.add: 'Add post'
 add.title: 'Enter title here'
 add.body: 'Enter post here'
 add.send: 'Send post'
+nav.my: 'My posts'
+sidebar.announcements: Announcements
+sidebar.comments: Comments
+blog.send: Save
+blog.delete: 'Delete post'
+blog.edit: 'Edit post'
+blog.edit.title: Edit
+blog.none: __blog.none
+comment.add: 'Add comment'
+comment.send: Comment
+login.username: Username
+login.password: Password
+login.remember_me: 'Remember me'
+security.login.username: Username
+security.login.password: Password
+security.login.remember_me: 'Remember me'
+__security.login.username: Username
+__security.login.password: Password
+__security.login.remember_me: 'Remember me'
