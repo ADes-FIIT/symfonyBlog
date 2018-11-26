@@ -48,19 +48,22 @@ class BlogController extends Controller
     public function post(Request $request)
     {
         $blog = new Blog();
-
         $form = $this->createForm(BlogPostFormType::class, $blog);
-
         $this->request = $request;
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                echo "WUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+                $em = $this->getDoctrine()->getManager();
 
+                $user = $this->getUser()->getUsername();
+                $blog->setAuthor($user);
 
-                return $this->redirect($this->generateUrl('contact'));
+                $em->persist($blog);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('homepage'));
             }
         }
 

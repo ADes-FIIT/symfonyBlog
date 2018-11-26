@@ -52,19 +52,11 @@
         <div class="row">
           <div class="col-md-12">
             <header id="header">
-              <hgroup>
                 <h2>
                   {% block blog_title %}
-                    <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo-md.png') }}"/><!--{{ 'site.name'|trans }}--></a>
-                  </img>
+                    <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo-md.png') }}" height="100" width="250"/><!--{{ 'site.name'|trans }}--></a>
                 {% endblock blog_title %}
               </h2>
-              <h3>
-                {% block blog_tagline %}
-                  <a href="{{ path('homepage') }}">{{ 'site.tagline'|trans }}</a>
-                {% endblock blog_tagline %}
-              </h3>
-            </hgroup>
           </header>
         </div>
       </div>

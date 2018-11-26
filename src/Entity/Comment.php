@@ -9,6 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

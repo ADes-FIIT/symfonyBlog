@@ -6,12 +6,12 @@
         <article class="blog">
             <header>
                 <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
-                <h2>{{ blog.title }}</h2>
+                <h2>{{ blog.title|striptags }}</h2>
             </header>
 
             <div>
                 <p>
-                    {{ blog.blog }}
+                    {{ blog.blog|striptags }}
                     <a href="{{ blog.id }}">Read more</a>
                 </p>
             </div>

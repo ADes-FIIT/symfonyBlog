@@ -35,7 +35,6 @@ class HomePageController extends Controller
             }
         }
 
-
         return $this->render('homepage/index.html.twig', [
             'blogs'      => $blogs,/*,
                 'comments'  => $comments*/

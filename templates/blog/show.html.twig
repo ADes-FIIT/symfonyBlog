@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ blog.title }}{% endblock %}
+{% block title %}{{ blog.title|striptags }}{% endblock %}
 
 {% block body %}
     <article class="blog">
@@ -8,11 +8,20 @@
             <div class="date">
                 <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time>
             </div>
-            <h2>{{ blog.title }}</h2>
+            {{ blog.title|raw }}
         </header>
         <div>
             {{ blog.blog|raw}}
-            <p><br>Tags: {{ blog.tags }}</p>
-         </div>
+            <hr>
+            Tags: {{ blog.tags|raw }}
+        </div>
     </article>
+    
+    {% if comments is defined %}
+        {% for comment in comments %}
+            <div class="comment">
+
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
