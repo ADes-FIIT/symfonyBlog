@@ -5,7 +5,11 @@
         <h3>{{ 'sidebar.announcements'|trans }}</h3>
     </header>
     <p class="announcements">
-
+        {% if is_granted('ROLE_ADMIN') -%}
+            <a href="#announcement" style="color:#337ab7">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'sidebar.add'|trans }}
+            </a>
+        {% endif %}
     </p>
 </section>
 

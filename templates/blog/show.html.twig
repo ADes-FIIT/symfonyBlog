@@ -10,11 +10,13 @@
             </div>
             {{ blog.title|raw }}
         </header>
-        <div>
+        <span id="blogbody">
             {{ blog.blog|raw}}
-            <hr>
-            Tags: {{ blog.tags|raw }}
-        </div>
+        </span>
+        <hr>
+        <span id="blogtags">
+        Tags: {{ blog.tags|raw }}
+        </span>
     </article>
     <hr>
     <div class="comment">

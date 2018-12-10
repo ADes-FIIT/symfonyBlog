@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Blog;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -27,10 +28,12 @@ class BlogRepository extends ServiceEntityRepository
     }
 
 
-    public function findUserBlogs($username) {
+    public function findUserBlogs(
+        User $user
+    ) {
         return $this->createQueryBuilder('a')
             ->andWhere('a.author = :val')
-            ->setParameter('val', $username)
+            ->setParameter('val', $user)
             ->orderBy('a.id', 'DESC')
             ->getQuery()
             ->getResult()

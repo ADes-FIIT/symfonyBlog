@@ -28,7 +28,7 @@
       <!-- Our CSS -->
       <link href="{{ asset('css/screen.css') }}" type="text/css" rel="stylesheet"/>
     {% endblock stylesheets %}
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
+
   </head>
   <body>
  
@@ -90,10 +90,16 @@
                 </a>
               </li>
               <li>
-                <a href="{{ path('search') }}" style="color:#337ab7">
+                <a href="#search" style="color:#337ab7">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span> {% trans %}nav.search{% endtrans %}
                 </a>
               </li>
+              <div id="search">
+                <span class="close">X</span>
+                <form role="search" id="searchform" action="/search" method="get">
+                  <input value="" name="q" type="search" placeholder="{{ 'search.input'|trans }}"/>
+                </form>
+              </div>
               {% if app.user %}
                 <li>
                   <a href="{{ path('add') }}" style="color:#337ab7">
@@ -114,7 +120,6 @@
               <!--|| BEGIN ADMIN LINK ||-->
                 {% if is_granted('ROLE_ADMIN') -%}
                   <li class="dropdown">
-
                   <li class="dropdown">
                     <a href="{{ path('admin') }}" style="color:#15609f"><span class="glyphicon glyphicon-king" aria-hidden="true"></span> {{ 'admin.panel'|trans }}</a>
                   </li>
@@ -123,8 +128,9 @@
               <!--|| END ADMIN LINK ||-->
 
               <!--| Login/Logout Start |-->
-              <li class="dropdown pull-right"><a href="{{ path('fos_user_registration_register') }}" style="color:#15609f"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span> {% trans %}login.register{% endtrans %}</a></li>
-
+                {% if app.user == false %}
+                  <li class="dropdown pull-right"><a href="{{ path('fos_user_registration_register') }}" style="color:#15609f"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span> {% trans %}login.register{% endtrans %}</a></li>
+                {% endif %}
                 {% if app.user %}
                   <li class="dropdown pull-right"><a href="{{ path('fos_user_security_logout') }}" style="color:#15609f"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {% trans %}login.logout{% endtrans %}</a></li>
                 {% else %}
@@ -192,6 +198,8 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
           <!-- FontAweSome JS -->
           <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+          <!-- MyScripts -->
+          <script src="javascript/main.js"></script>
         {% endblock javascripts %}
       </div>
     </body>

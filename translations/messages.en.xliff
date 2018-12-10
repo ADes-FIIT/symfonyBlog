@@ -10,7 +10,7 @@
             </trans-unit>
             <trans-unit id="_site.tagline">
                 <source>site.tagline</source>
-                <target>BootIQ - FIIT - self</target>
+                <target>BIQ</target>
             </trans-unit>
             <trans-unit id="_site.name">
                 <source>site.name</source>
@@ -43,6 +43,12 @@
                 <target>My posts</target>
             </trans-unit>
 
+<!--|| BLOG ||-->
+            <trans-unit id="_search.input">
+                <source>search.input</source>
+                <target>Enter your search</target>
+            </trans-unit>
+
 <!--|| SIDEBAR ||-->
             <trans-unit id="_sidebar.announcements">
                 <source>sidebar.announcements</source>
@@ -51,6 +57,10 @@
             <trans-unit id="_sidebar.comments">
                 <source>sidebar.comments</source>
                 <target>Comments</target>
+            </trans-unit>
+            <trans-unit id="_sidebar.add">
+                <source>sidebar.add</source>
+                <target>Add announcement</target>
             </trans-unit>
 
 <!--|| ADD BLOG ||-->

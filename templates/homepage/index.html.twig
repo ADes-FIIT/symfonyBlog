@@ -12,7 +12,7 @@
             </header>
             <div>
                 <p>
-                    {{ blog.blog|striptags }}
+                    {{ blog.blog|striptags|slice(0, 50) ~ "..." }}
                     <a href="{{ blog.id }}">Read more</a>
                 </p>
             </div>

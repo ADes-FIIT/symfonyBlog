@@ -22,7 +22,10 @@ class Comment
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $author;
 
@@ -37,21 +40,24 @@ class Comment
     private $created;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var Blog
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Blog")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $blogId;
+    private $blog;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getAuthor(): ?string
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthor(User $author): self
     {
         $this->author = $author;
 
@@ -82,14 +88,14 @@ class Comment
         return $this;
     }
 
-    public function getBlogId(): ?int
+    public function getBlog(): ?Blog
     {
-        return $this->blogId;
+        return $this->blog;
     }
 
-    public function setBlogId(int $blogId): self
+    public function setBlog(Blog $blog): self
     {
-        $this->blogId = $blogId;
+        $this->blog = $blog;
 
         return $this;
     }

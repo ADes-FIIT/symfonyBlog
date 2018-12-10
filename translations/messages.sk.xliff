@@ -10,7 +10,7 @@
             </trans-unit>
             <trans-unit id="_site.tagline">            
                 <source>site.tagline</source>
-                <target>Weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</target>
+                <target>FIIT</target>
             </trans-unit>
             <trans-unit id="_site.name">           
                 <source>site.name</source>
@@ -41,6 +41,12 @@
             <trans-unit id="_nav.my">
                 <source>nav.my</source>
                 <target>Moje príspevky</target>
+            </trans-unit>
+
+<!--|| BLOG ||-->
+            <trans-unit id="_search.input">
+                <source>search.input</source>
+                <target>Zadajte dotaz</target>
             </trans-unit>
 
 <!--|| BLOG ||-->
@@ -80,6 +86,10 @@
             <trans-unit id="_sidebar.comments">
                 <source>sidebar.comments</source>
                 <target>Komenty</target>
+            </trans-unit>
+            <trans-unit id="_sidebar.add">
+                <source>sidebar.add</source>
+                <target>Pridať oznámenie</target>
             </trans-unit>
 
 <!--|| ADD BLOG ||-->

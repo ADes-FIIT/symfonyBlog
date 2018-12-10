@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "easycorp/easyadmin-bundle": "^1.17",
+        "friendsofphp/php-cs-fixer": "^2.13",
         "friendsofsymfony/ckeditor-bundle": "^1.2",
         "friendsofsymfony/user-bundle": "@dev",
         "mustangx/eu-cookie-law-bundle": "^1.0",

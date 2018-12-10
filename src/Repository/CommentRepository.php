@@ -20,10 +20,10 @@ class CommentRepository extends ServiceEntityRepository
     }
 
 
-    public function getCommentsForBlog($blogId) {
+    public function getCommentsForBlog($blog) {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.blogId = :val')
-            ->setParameter('val', $blogId)
+            ->andWhere('a.blog = :val')
+            ->setParameter('val', $blog)
             ->orderBy('a.id', 'ASC')
             ->getQuery()
             ->getResult()

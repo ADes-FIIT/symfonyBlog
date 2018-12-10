@@ -1,4 +1,5 @@
 <?php
+
 // src/Controller/BlogController.php
 
 namespace App\Controller;
@@ -7,12 +8,9 @@ use App\Entity\Blog;
 use App\Form\BlogPostFormType;
 use App\Form\CommentType;
 use App\Entity\Comment;
-use App\Repository\BlogRepository;
-use mysql_xdevapi\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 /**
  * Blog controller.
@@ -38,32 +36,30 @@ class BlogController extends Controller
         $comments = $em->getRepository('App:Comment')
             ->getCommentsForBlog($pageid);
 
-        if ($request->getMethod() == 'POST') {
+        if ('POST' == $request->getMethod()) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 try {
-                    $user = $this->getUser()->getUsername();
-                    $comment->setAuthor($user);
-                }
-                catch (\Throwable $t){
-                    $comment->setAuthor("Anonymous" . session_id());
+                    $comment->setAuthor($this->getUser());
+                } catch (\Throwable $t) {
+                    //TODO handle user not logged in when commenting
                 }
 
-                $comment->setBlogId($pageid);
+                $comment->setBlog($blog);
 
                 $em->persist($comment);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('showblog', array('pageid' => $pageid)));
+                return $this->redirect($this->generateUrl('showblog', ['pageid' => $pageid]));
             }
         }
 
         return $this->render('blog/show.html.twig', [
-            'pageid'    => $pageid,
-            'blog'      => $blog,
-            'comments'  => $comments,
-            'form'      => $form->createView(),
+            'pageid' => $pageid,
+            'blog' => $blog,
+            'comments' => $comments,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -76,14 +72,13 @@ class BlogController extends Controller
         $form = $this->createForm(BlogPostFormType::class, $blog);
         $this->request = $request;
 
-        if ($request->getMethod() == 'POST') {
+        if ('POST' == $request->getMethod()) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
 
-                $user = $this->getUser()->getUsername();
-                $blog->setAuthor($user);
+                $blog->setAuthor($this->getUser());
 
                 $em->persist($blog);
                 $em->flush();
@@ -92,9 +87,9 @@ class BlogController extends Controller
             }
         }
 
-        return $this->render('blog/add.html.twig', array(
-            'form' => $form->createView()
-        ));
+        return $this->render('blog/add.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -105,19 +100,18 @@ class BlogController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('App:Blog');
 
-        $username = $this->getUser()->getUsername();
-
-        $blogs = $repo->findUserBlogs($username);
+        $blogs = $repo->findUserBlogs($this->getUser());
 
         if (!$blogs) {
             $errorMessage = 1;
+
             return $this->render('blog/myposts.html.twig', [
                 'errorMessage' => $errorMessage,
             ]);
         }
 
         return $this->render('blog/myposts.html.twig', [
-            'blogs'      => $blogs,
+            'blogs' => $blogs,
         ]);
     }
 
@@ -133,7 +127,7 @@ class BlogController extends Controller
         $form = $this->createForm(BlogPostFormType::class, $blog);
         $this->request = $request;
 
-        if ($request->getMethod() == 'POST') {
+        if ('POST' == $request->getMethod()) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
@@ -145,10 +139,10 @@ class BlogController extends Controller
             }
         }
 
-        return $this->render('blog/edit.html.twig', array(
+        return $this->render('blog/edit.html.twig', [
             'blog' => $blog,
-            'form' => $form->createView()
-        ));
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -160,8 +154,15 @@ class BlogController extends Controller
         $repo = $em->getRepository('App:Blog');
         $blog = $repo->findBlogById($id);
         $em->remove($blog);
+
+        $repo = $em->getRepository('App:Comment');
+        $comments = $repo->getCommentsForBlog($id);
+        foreach ($comments as $comment) {
+            $em->remove($comment);
+        }
+
         $em->flush();
 
-        return $this->redirect("/myposts");
+        return $this->redirect('/myposts');
     }
 }
