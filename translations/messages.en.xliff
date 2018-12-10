@@ -43,10 +43,14 @@
                 <target>My posts</target>
             </trans-unit>
 
-<!--|| BLOG ||-->
+<!--|| SEARCH ||-->
             <trans-unit id="_search.input">
                 <source>search.input</source>
                 <target>Enter your search</target>
+            </trans-unit>
+            <trans-unit id="_search.notfound">
+                <source>search.notfound</source>
+                <target>No results found</target>
             </trans-unit>
 
 <!--|| SIDEBAR ||-->
@@ -86,7 +90,10 @@
                 <source>comment.add</source>
                 <target>Add comment</target>
             </trans-unit>
-
+            <trans-unit id="_comment.enter">
+                <source>comment.enter</source>
+                <target>Enter comment here</target>
+            </trans-unit>
 
 <!--|| BLOG ||-->
             <trans-unit id="_blog.send">
@@ -105,7 +112,22 @@
                 <source>blog.edit.title</source>
                 <target>Edit</target>
             </trans-unit>
-
+            <trans-unit id="_blog.readmore">
+                <source>blog.readmore</source>
+                <target>Read more</target>
+            </trans-unit>
+            <trans-unit id="_blog.title">
+                <source>blog.title</source>
+                <target>Enter your post's title here</target>
+            </trans-unit>
+            <trans-unit id="_blog.body">
+                <source>blog.body</source>
+                <target>Enter your post's body here</target>
+            </trans-unit>
+            <trans-unit id="_blog.tags">
+                <source>blog.tags</source>
+                <target>Enter your post's tags here</target>
+            </trans-unit>
 
 <!--|| LOCALE ||-->
             <trans-unit id="_locale.english">

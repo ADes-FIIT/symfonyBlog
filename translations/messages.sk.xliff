@@ -43,10 +43,14 @@
                 <target>Moje príspevky</target>
             </trans-unit>
 
-<!--|| BLOG ||-->
+<!--|| SEARCH ||-->
             <trans-unit id="_search.input">
                 <source>search.input</source>
                 <target>Zadajte dotaz</target>
+            </trans-unit>
+            <trans-unit id="_search.notfound">
+                <source>search.notfound</source>
+                <target>Neboli nájdené žiadne príspevky</target>
             </trans-unit>
 
 <!--|| BLOG ||-->
@@ -66,6 +70,22 @@
                 <source>blog.edit.title</source>
                 <target>Editovať</target>
             </trans-unit>
+            <trans-unit id="_blog.readmore">
+                <source>blog.readmore</source>
+                <target>Čítať viac</target>
+            </trans-unit>
+            <trans-unit id="_blog.title">
+                <source>blog.title</source>
+                <target>Sem zadajte nadpis vášho príspevku</target>
+            </trans-unit>
+            <trans-unit id="_blog.body">
+                <source>blog.body</source>
+                <target>Sem zadajte váš príspevok</target>
+            </trans-unit>
+            <trans-unit id="_blog.tags">
+                <source>blog.tags</source>
+                <target>Sem zadajte tagy vášho príspevku</target>
+            </trans-unit>
 
 <!--|| COMMENT ||-->
             <trans-unit id="_comment.send">
@@ -75,6 +95,10 @@
             <trans-unit id="_comment.add">
                 <source>comment.add</source>
                 <target>Pridajte komentár</target>
+            </trans-unit>
+            <trans-unit id="_comment.enter">
+                <source>comment.enter</source>
+                <target>Sem napíšte komentár</target>
             </trans-unit>
 
 

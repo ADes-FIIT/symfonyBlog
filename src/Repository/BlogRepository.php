@@ -50,6 +50,48 @@ class BlogRepository extends ServiceEntityRepository
             ;
     }
 
+    public function searchBlogs(
+        String $title
+    ) {
+        $title = $this->sanitizeSearchQuery($title);
+        $searchTerms = $this->extractSearchTerms($title);
+
+        $queryBuilder = $this->createQueryBuilder('a');
+
+        foreach ($searchTerms as $key => $term) {
+            $queryBuilder
+                ->orWhere('a.title LIKE :t_'.$key)
+                ->orWhere('a.tags LIKE :t_'.$key)
+                ->setParameter('t_'.$key, '%'.$term.'%')
+            ;
+        }
+
+        return $queryBuilder
+            ->orderBy('a.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Removes all non-alphanumeric characters except whitespaces.
+     */
+    private function sanitizeSearchQuery(string $query): string
+    {
+        return trim(preg_replace('/[[:space:]]+/', ' ', $query));
+    }
+
+    /**
+     * Splits the search query into terms and removes the ones which are irrelevant.
+     */
+    private function extractSearchTerms(string $searchQuery): array
+    {
+        $terms = array_unique(explode(' ', $searchQuery));
+
+        return array_filter($terms, function ($term) {
+            return 2 <= mb_strlen($term);
+        });
+    }
+
     /*
     public function findOneBySomeField($value): ?Blog
     {

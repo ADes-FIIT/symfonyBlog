@@ -2,6 +2,8 @@
 // src/controller/HomePageController.php
 namespace App\Controller;
 
+use App\Service\PostsLoading;
+use App\Service\FormHandler;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Contact;
@@ -14,12 +16,9 @@ class HomePageController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function index()
+    public function index(PostsLoading $loading)
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('App:Blog');
-        $blogs = $repo->loadBlogs();
-
+        $blogs = $loading->loadHomepage();
         if (!$blogs) {
             throw $this->createNotFoundException('Unable to find Blog post/s.');
         }
@@ -32,14 +31,15 @@ class HomePageController extends Controller
     /**
      * @Route("/about", name="about")
      */
-    public function about() {
+    public function about()
+    {
         return $this->render('about/about.html.twig');
     }
 
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(Request $request)
+    public function contact(Request $request, FormHandler $formHandler)
     {
         $enquiry = new Contact();
         $form = $this->createForm(ContactType::class, $enquiry);
@@ -55,7 +55,7 @@ class HomePageController extends Controller
                     ->setBody($this->renderView('contact/contactEmail.txt.twig', array('enquiry' => $enquiry)));
                 $this->get('mailer')->send($message);
 
-                $this->get('session')->getFlashbag('blog-notice', 'Your contact enquiry was successfully sent. Thank you!');
+                $this->addFlash('notice', "Your contact enquiry was successfully sent. Thank you!");
 
                 return $this->redirect($this->generateUrl('contact'));
             }
@@ -72,20 +72,12 @@ class HomePageController extends Controller
     public function search(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('App:Blog');
-        $blogs = $repo->loadBlogs();
+        $title = $request->get('q');
+
+        $blogs = $repo->searchBlogs($title);
 
         if (!$blogs) {
-            throw $this->createNotFoundException('Unable to find Blog post/s.');
-        }
-
-        foreach($blogs as $blog) {
-            $text = $blog->getBlog();
-            $id = $blog->getId();
-            if(strlen($text) > 50) {
-                $text = substr($text, 0, 50);
-            }
-            $text .= "...";
-            $blog->setBlog($text);
+            return $this->render('search/search.html.twig');
         }
 
         return $this->render('search/search.html.twig', [

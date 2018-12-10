@@ -37,7 +37,7 @@
 
     <form action="{{ path('showblog', {'pageid': pageid}) }}" method="POST" class="send">
         <h3>{{ 'comment.add'|trans }}</h3>
-        {{ form_row(form.comment) }}
+        {{ form_widget (form.comment, {'attr':{'placeholder':'comment.enter'|trans}}) }}
         <br>
         {{ form_rest(form) }}
         <input type="submit" class="send" value="{{ 'comment.send'|trans }}"/>

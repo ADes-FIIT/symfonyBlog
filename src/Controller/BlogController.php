@@ -40,11 +40,13 @@ class BlogController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                try {
-                    $comment->setAuthor($this->getUser());
-                } catch (\Throwable $t) {
-                    //TODO handle user not logged in when commenting
+                $user = $this->getUser();
+                if(!$user) {
+                    $this->addFlash('error', 'You have to be logged in in order to comment.');
+                    return $this->redirect($this->generateUrl('showblog', ['pageid' => $pageid]));
                 }
+                else
+                    $comment->setAuthor();
 
                 $comment->setBlog($blog);
 

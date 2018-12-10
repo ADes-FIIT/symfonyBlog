@@ -2,5 +2,24 @@
 {% extends 'layout.html.twig' %}
  
 {% block body %}
-    Search
+    {% if blogs is defined %}
+        {% for blog in blogs %}
+            <article class="blog">
+                <header>
+                    <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+                    <h2>
+                        <a href="/{{ blog.id }}">{{ blog.title|striptags }}</a>
+                    </h2>
+                </header>
+                <div>
+                    <p>
+                        {{ blog.blog|striptags|slice(0, 50) ~ "..." }}
+                        <a href="{{ blog.id }}">{{ 'home.readmore'|trans }}</a>
+                    </p>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <h1 style="color: red;text-align: center">{{ 'search.notfound'|trans}}</h1>
+    {% endif %}
 {% endblock %}

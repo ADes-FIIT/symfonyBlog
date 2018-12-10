@@ -1,5 +1,5 @@
 site.title: 'ADes Learning Blog'
-site.tagline: 'BootIQ - FIIT - self'
+site.tagline: BIQ
 site.name: 'Adam is learning now!'
 nav.home: Home
 nav.about: About
@@ -66,3 +66,9 @@ security.login.remember_me: 'Remember me'
 __security.login.username: Username
 __security.login.password: Password
 __security.login.remember_me: 'Remember me'
+search.input: 'Enter your search'
+search.notfound: 'No results found'
+home.readmore: 'Read more'
+sidebar.add: 'Add announcement'
+comment.enter: 'Enter comment here'
+blgo.title: __blgo.title

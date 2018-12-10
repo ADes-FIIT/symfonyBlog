@@ -1,5 +1,5 @@
 site.title: 'ADes Blog'
-site.tagline: Weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+site.tagline: FIIT
 site.name: 'Učím sa'
 nav.home: Domov
 nav.about: 'O mne'
@@ -57,3 +57,9 @@ role.admin: Administrátor
 blog.none: __blog.none
 comment.add: 'Pridajte komentár'
 comment.send: Komentovať
+search.input: 'Zadajte dotaz'
+search.notfound: 'Neboli nájdené žiadne príspevky'
+home.readmore: 'Čítať viac'
+sidebar.add: 'Pridať oznámenie'
+comment.enter: 'Sem napíšte komentár'
+blgo.title: __blgo.title

@@ -13,7 +13,7 @@
             <div>
                 <p>
                     {{ blog.blog|striptags|slice(0, 50) ~ "..." }}
-                    <a href="{{ blog.id }}">Read more</a>
+                    <a href="{{ blog.id }}">{{ 'blog.readmore'|trans }}</a>
                 </p>
             </div>
         </article>

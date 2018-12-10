@@ -15,9 +15,7 @@ class CommentType extends AbstractType
         $builder
             ->add('comment', TextareaType::class, array(
                 'label' => false,
-                'data' => 'Enter comment here'
-    ))
-        ;
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

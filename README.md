@@ -1,12 +1,15 @@
 # Blog with symfony - learning stuff
 
+```
+https://symfonycasts.com/screencast/symfony-fundamentals/create-service
+```
+
 ### Source
 ```
-1. Search
 2. User settings
 3. About page
 4. Admin add announcements
-5. User settings - popup: Settings, MyPosts
+5. User settings - popup: Settings
 6. Admin setting translations
 7. Day, Month translations
 8. Images
