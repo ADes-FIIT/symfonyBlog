@@ -86,6 +86,10 @@
                 <source>blog.tags</source>
                 <target>Sem zadajte tagy vášho príspevku</target>
             </trans-unit>
+            <trans-unit id="_blog.none">
+                <source>blog.none</source>
+                <target>Zatiaľ žiadne príspevky</target>
+            </trans-unit>
 
 <!--|| COMMENT ||-->
             <trans-unit id="_comment.send">
@@ -100,7 +104,14 @@
                 <source>comment.enter</source>
                 <target>Sem napíšte komentár</target>
             </trans-unit>
-
+            <trans-unit id="_comment.none">
+                <source>comment.none</source>
+                <target>Žiadne nedávne komentáre</target>
+            </trans-unit>
+            <trans-unit id="_comment.login">
+                <source>comment.login</source>
+                <target>Pre pridanie komentáru musíte byť registrovaný!</target>
+            </trans-unit>
 
 <!--|| SIDEBAR ||-->
             <trans-unit id="_sidebar.announcements">
@@ -155,7 +166,7 @@
             </trans-unit>
             <trans-unit id="_footer.mail.title">            
                 <source>footer.mail.title</source>
-                <target>Mail</target>
+                <target>ADes</target>
             </trans-unit>
   
 <!--|| LEGAL ||-->
@@ -197,6 +208,11 @@
                 <source>Body</source>
                 <target>Telo</target>
             </trans-unit>
+            <trans-unit id="_form.success">
+                <source>form.success</source>
+                <target>Vaša správa bola úspešne odoslaná. Ďakujem!</target>
+            </trans-unit>
+
    
 <!--|| GENERIC ||-->
             <trans-unit id="_generic.user">
@@ -267,6 +283,18 @@
             </trans-unit>
 
 <!--|| LOGIN (FOSU) ||-->
+            <trans-unit id="_security.login.username">
+              <source>security.login.username</source>
+              <target>Používateľské meno</target>
+            </trans-unit>
+            <trans-unit id="_security.login.password">
+              <source>security.login.password</source>
+              <target>Heslo</target>
+            </trans-unit>
+            <trans-unit id="_security.login.remember_me">
+              <source>security.login.remember_me</source>
+              <target>Pamätať si ma</target>
+            </trans-unit>
             <trans-unit id="_login.login">
               <source>login.login</source>
               <target>Prihlásenie</target>
@@ -293,9 +321,86 @@
             </trans-unit>
             <trans-unit id="_login.submit">
               <source>login.submit</source>
-              <target>Odoslať</target>
+              <target>Prihlásiť</target>
             </trans-unit>
-              
+
+<!--|| DATE ||-->
+            <trans-unit id="_day.monday">
+              <source>Monday</source>
+              <target>Pondelok</target>
+            </trans-unit>
+            <trans-unit id="_day.tuesday">
+              <source>Tuesday</source>
+              <target>Utorok</target>
+            </trans-unit>
+            <trans-unit id="_day.wednesday">
+              <source>Wednesday</source>
+              <target>Streda</target>
+            </trans-unit>
+            <trans-unit id="_day.thursday">
+              <source>Thrusday</source>
+              <target>Štvrtok</target>
+            </trans-unit>
+            <trans-unit id="_day.friday">
+              <source>Friday</source>
+              <target>Piatok</target>
+            </trans-unit>
+            <trans-unit id="_day.saturday">
+              <source>Saturday</source>
+              <target>Sobota</target>
+            </trans-unit>
+            <trans-unit id="_day.sunday">
+              <source>Sunday</source>
+              <target>Nedeľa</target>
+            </trans-unit>
+            <trans-unit id="_month.january">
+              <source>January</source>
+              <target>Január</target>
+            </trans-unit>
+            <trans-unit id="_month.february">
+              <source>February</source>
+              <target>Február</target>
+            </trans-unit>
+            <trans-unit id="_month.march">
+              <source>March</source>
+              <target>Marec</target>
+            </trans-unit>
+            <trans-unit id="_month.april">
+              <source>April</source>
+              <target>Apríl</target>
+            </trans-unit>
+            <trans-unit id="_month.may">
+              <source>May</source>
+              <target>Máj</target>
+            </trans-unit>
+            <trans-unit id="_month.jun">
+              <source>Jun</source>
+              <target>Jún</target>
+            </trans-unit>
+            <trans-unit id="_month.july">
+              <source>July</source>
+              <target>Júl</target>
+            </trans-unit>
+            <trans-unit id="_month.august">
+              <source>August</source>
+              <target>August</target>
+            </trans-unit>
+            <trans-unit id="_month.september">
+              <source>September</source>
+              <target>September</target>
+            </trans-unit>
+            <trans-unit id="_month.october">
+              <source>October</source>
+              <target>Október</target>
+            </trans-unit>
+            <trans-unit id="_month.november">
+              <source>November</source>
+              <target>November</target>
+            </trans-unit>
+            <trans-unit id="_month.december">
+              <source>December</source>
+              <target>December</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

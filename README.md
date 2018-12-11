@@ -11,7 +11,6 @@ https://symfonycasts.com/screencast/symfony-fundamentals/create-service
 4. Admin add announcements
 5. User settings - popup: Settings
 6. Admin setting translations
-7. Day, Month translations
 8. Images
 9. 
 ```

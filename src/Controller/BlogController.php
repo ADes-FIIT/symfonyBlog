@@ -8,6 +8,8 @@ use App\Entity\Blog;
 use App\Form\BlogPostFormType;
 use App\Form\CommentType;
 use App\Entity\Comment;
+use App\Service\FormHandler;
+use App\Service\PostsLoading;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,45 +19,28 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class BlogController extends Controller
 {
+    private $postsLoading;
+    private $formHandler;
+
+    public function __construct(
+        PostsLoading $postsLoading,
+        FormHandler $formHandler
+    ){
+        $this->postsLoading = $postsLoading;
+        $this->formHandler = $formHandler;
+    }
+
     /**
      * @Route("/{pageid}", name="showblog", requirements={"pageid"="\d+"})
      */
     public function show(Request $request, $pageid)
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('App:Blog');
-        $blog = $repo->find($pageid);
-        $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        $this->request = $request;
+        $blog = $this->postsLoading->loadShowPost($pageid);
+        $comments = $this->postsLoading->loadShowComments($pageid);
+        $form = $this->formHandler->commentForm($request, $blog);
 
-        if (!$blog) {
-            throw $this->createNotFoundException('Unable to find Blog post/s.');
-        }
-
-        $comments = $em->getRepository('App:Comment')
-            ->getCommentsForBlog($pageid);
-
-        if ('POST' == $request->getMethod()) {
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-                $user = $this->getUser();
-                if(!$user) {
-                    $this->addFlash('error', 'You have to be logged in in order to comment.');
-                    return $this->redirect($this->generateUrl('showblog', ['pageid' => $pageid]));
-                }
-                else
-                    $comment->setAuthor();
-
-                $comment->setBlog($blog);
-
-                $em->persist($comment);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('showblog', ['pageid' => $pageid]));
-            }
-        }
+        if ($form == null)
+            return $this->redirect($this->generateUrl('showblog', ['pageid' => $pageid]));
 
         return $this->render('blog/show.html.twig', [
             'pageid' => $pageid,
@@ -70,24 +55,10 @@ class BlogController extends Controller
      */
     public function post(Request $request)
     {
-        $blog = new Blog();
-        $form = $this->createForm(BlogPostFormType::class, $blog);
-        $this->request = $request;
+        $form = $this->formHandler->addPostForm($request);
 
-        if ('POST' == $request->getMethod()) {
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-
-                $blog->setAuthor($this->getUser());
-
-                $em->persist($blog);
-                $em->flush();
-
+        if ($form === null)
                 return $this->redirect($this->generateUrl('myposts'));
-            }
-        }
 
         return $this->render('blog/add.html.twig', [
             'form' => $form->createView(),
@@ -99,18 +70,7 @@ class BlogController extends Controller
      */
     public function myPosts()
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('App:Blog');
-
-        $blogs = $repo->findUserBlogs($this->getUser());
-
-        if (!$blogs) {
-            $errorMessage = 1;
-
-            return $this->render('blog/myposts.html.twig', [
-                'errorMessage' => $errorMessage,
-            ]);
-        }
+        $blogs = $this->postsLoading->loadMyPosts();
 
         return $this->render('blog/myposts.html.twig', [
             'blogs' => $blogs,
@@ -122,24 +82,11 @@ class BlogController extends Controller
      */
     public function editMyPost(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('App:Blog');
-        $blog = $repo->findBlogById($id);
+        $blog = $this->postsLoading->loadEditPost($id);
+        $form = $this->formHandler->editPostForm($request, $blog);
 
-        $form = $this->createForm(BlogPostFormType::class, $blog);
-        $this->request = $request;
-
-        if ('POST' == $request->getMethod()) {
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('myposts'));
-            }
-        }
+        if ($form === null)
+            return $this->redirect($this->generateUrl('myposts'));
 
         return $this->render('blog/edit.html.twig', [
             'blog' => $blog,
@@ -152,18 +99,7 @@ class BlogController extends Controller
      */
     public function deleteMyPost($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('App:Blog');
-        $blog = $repo->findBlogById($id);
-        $em->remove($blog);
-
-        $repo = $em->getRepository('App:Comment');
-        $comments = $repo->getCommentsForBlog($id);
-        foreach ($comments as $comment) {
-            $em->remove($comment);
-        }
-
-        $em->flush();
+        $this->postsLoading->deleteMyPost($id);
 
         return $this->redirect('/myposts');
     }

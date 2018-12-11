@@ -1,11 +1,18 @@
-{# templates/homepage/index.html.twig #}
 {% extends 'layout.html.twig' %}
  
 {% block body %}
+    {% if blogs is empty %}
+        <h1 style="text-align: center">{{ 'blog.none'|trans }}</h1>
+    {% endif %}
     {% for blog in blogs %}
         <article class="blog">
             <header>
-                <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+                <div class="date">
+                    {% set day =  blog.created|date('l') %}
+                    {% set month =  blog.created|date('F') %}
+
+                    <time datetime="{{ blog.created|date('c') }}">{{ day|trans }}, {{ month|trans }} {{ blog.created|date('j, Y') }}</time>
+                </div>
                 <h2>
                     <a href="/{{ blog.id }}">{{ blog.title|striptags }}</a>
                 </h2>

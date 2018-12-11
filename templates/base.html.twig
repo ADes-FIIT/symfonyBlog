@@ -1,27 +1,27 @@
 {# templates/base.html.twig #}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html" ;=";" charset="utf-8"/>
-    <!-- | Important for Responsive | -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-    <title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html" ;=";" charset="utf-8"/>
+  <!-- | Important for Responsive | -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
       {% block title %}
-        {{ 'site.title'|trans }}
+          {{ 'site.title'|trans }}
         -
-        {{ 'site.tagline'|trans }}
+          {{ 'site.tagline'|trans }}
       {% endblock title %}
-    </title>
-    <!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+  </title>
+  <!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
     {% block stylesheets %}
       <!-- Google Fonts CSS -->
       <link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
- 
+
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
- 
+
       <!-- FontAweSome min CSS -->
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -29,38 +29,38 @@
       <link href="{{ asset('css/screen.css') }}" type="text/css" rel="stylesheet"/>
     {% endblock stylesheets %}
 
-  </head>
-  <body>
-    <div id="blog" class="container">
-      <!--|| Locale Switch ||-->
-      <br/>
+</head>
+<body>
+<div id="blog" class="container">
+  <!--|| Locale Switch ||-->
+  <br/>
+  <div class="row">
+    <div class="col-xs-3 col-sm-1 col-md-1 col-xs-offset-6 col-sm-offset-10 col-md-offset-10">
+      <a href="/switchenglish" class="thumbnail">
+        <img src="{{ asset('images/flags/us.png') }}" alt="english">
+      </a>
+    </div>
+    <div class="col-xs-3 col-sm-1 col-md-1">
+      <a href="/switchslovak" class="thumbnail">
+        <img src="{{ asset('images/flags/sk.png') }}" alt="slovak">
+      </a>
+    </div>
+  </div>
+
+    {% block header %}
       <div class="row">
-        <div class="col-xs-3 col-sm-1 col-md-1 col-xs-offset-6 col-sm-offset-10 col-md-offset-10">
-          <a href="/switchenglish" class="thumbnail">
-            <img src="{{ asset('images/flags/us.png') }}" alt="english">
-          </a>
-        </div>
-        <div class="col-xs-3 col-sm-1 col-md-1">
-          <a href="/switchslovak" class="thumbnail">
-            <img src="{{ asset('images/flags/sk.png') }}" alt="slovak">
-          </a>
-        </div>
-      </div>
- 
-      {% block header %}
-        <div class="row">
-          <div class="col-md-12">
-            <header id="header">
-                <h2>
-                  {% block blog_title %}
-                    <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo-md.png') }}" height="100" width="250"/><!--{{ 'site.name'|trans }}--></a>
+        <div class="col-md-12">
+          <header id="header">
+            <h2>
+                {% block blog_title %}
+                  <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo-md.png') }}" height="100" width="250"/><!--{{ 'site.name'|trans }}--></a>
                 {% endblock blog_title %}
-              </h2>
+            </h2>
           </header>
         </div>
       </div>
     {% endblock header %}
- 
+
     {% block navbar %}
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -72,20 +72,20 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ path('homepage') }}" style="color:#105ea0">
-              {{ 'nav.home'|trans }}
+                {{ 'nav.home'|trans }}
             </a>
           </div>
- 
+
           <div class="collapse navbar-collapse" id="navbar-simples">
             <ul class="nav navbar-nav">
               <li>
                 <a href="{{ path('about') }}" style="color:#337ab7">
-                  {{ 'nav.about'|trans }}
+                    {{ 'nav.about'|trans }}
                 </a>
               </li>
               <li>
                 <a href="{{ path('contact') }}" style="color:#337ab7">
-                  {{ 'nav.contact'|trans }}
+                    {{ 'nav.contact'|trans }}
                 </a>
               </li>
               <li>
@@ -99,18 +99,18 @@
                   <input value="" name="q" type="search" placeholder="{{ 'search.input'|trans }}"/>
                 </form>
               </div>
-              {% if app.user %}
-                <li>
-                  <a href="{{ path('add') }}" style="color:#337ab7">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}nav.add{% endtrans %}
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ path('myposts') }}" style="color:#337ab7">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {% trans %}nav.my{% endtrans %}
-                  </a>
-                </li>
-              {% endif %}
+                {% if app.user %}
+                  <li>
+                    <a href="{{ path('add') }}" style="color:#337ab7">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}nav.add{% endtrans %}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ path('myposts') }}" style="color:#337ab7">
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {% trans %}nav.my{% endtrans %}
+                    </a>
+                  </li>
+                {% endif %}
             </ul>
             <!--| Login/Logout Start-needed |-->
             <ul class="nav navbar-nav navbar-right">
@@ -142,74 +142,66 @@
         </div>
       </nav>
     {% endblock navbar %}
- 
-    <div class="panel panel-default">
- 
-      <div class="panel-body">
-        <div class="container-fluid">
- 
-          <!--|| The content of the Homepage will be here ||-->
-          <section class="main-col">
-              {% if app.session.flashBag.has('error') %}
-                  {% for msg in app.session.flashBag.get('error') %}
-                            <h2 style="color: red;text-align: center;">{{ msg }}</h2>
-                  {% endfor %}
-              {% endif %}
-              {% if app.session.flashBag.has('notice') %}
-                  {% for msg in app.session.flashBag.get('notice') %}
-                    <h2 style="color: red;text-align: center;">{{ msg }}</h2>
-                  {% endfor %}
-              {% endif %}
+
+  <div class="panel panel-default">
+
+    <div class="panel-body">
+      <div class="container-fluid">
+
+        <!--|| The content of the Homepage will be here ||-->
+        <section class="main-col">
+            {% if app.session.flashBag.has('error') %}
+                {% for msg in app.session.flashBag.get('error') %}
+                  <h2 style="color: red;text-align: center;">{{ msg|trans }}</h2>
+                {% endfor %}
+            {% endif %}
+            {% if app.session.flashBag.has('notice') %}
+                {% for msg in app.session.flashBag.get('notice') %}
+                  <h2 style="color: red;text-align: center;">{{ msg|trans }}</h2>
+                {% endfor %}
+            {% endif %}
             {% block body %}{% endblock body %}
-          </section>
-          <!--|| The content of the Sidebar will be here ||-->
-          <aside class="wrapper sidebar">
+        </section>
+        <!--|| The content of the Sidebar will be here ||-->
+        <aside class="wrapper sidebar">
             {% block sidebar %}{% endblock sidebar %}
-          </aside>
- 
-        </div>
+        </aside>
+
       </div>
- 
+    </div>
+
       {% block footer %}
         <!--|| Share in social networks the page that the user is reading ||-->
         <div class="panel-footer">
- 
+
           <div id="socialNetworks" class="text-center">
             <a id="shareFB" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
-              <i class="fab fa-facebook-f fa-2x"></i>
- 
-              <a id="shareTW" target="_blank" href="http://twitter.com/home?status={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
-                <i class="fab fa-twitter fa-2x"></i>
-              </div>
- 
-              <div id="footerInfo" class="text-center">
-                {% trans %}footer.copy{% endtrans %}
-                &copy; 2015-{{ "now" | date("Y") }}
-                <a href="{{ 'footer.mail.username'|trans }}@{{ 'footer.mail.domain'|trans }}">{{ 'footer.mail.title'|trans }}
-                </a>
-                <br>
-                <a href="">{{ 'legal.terms'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="">{{ 'legal.disclaimer'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="">{{ 'legal.privacy'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="">{{ 'legal.trademarks'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="">{{ 'legal.imprint'|trans }}</a>
- 
-              </div>
-            </div>
-          {% endblock footer %}
+              <i class="fab fa-facebook-f fa-2x"></i></a>
+
+            <a id="shareTW" target="_blank" href="http://twitter.com/home?status={{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+              <i class="fab fa-twitter fa-2x"></i></a>
+          </div>
+          <div id="footerInfo" class="text-center">
+            &copy; 2018-{{ "now" | date("Y") }}
+            <a href="{{ 'footer.mail.username'|trans }}@{{ 'footer.mail.domain'|trans }}">{{ 'footer.mail.title'|trans }}</a>
+
+          </div>
+
         </div>
- 
-        {% block javascripts %}
-          <!-- Optional JavaScript -->
-          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-          <!-- FontAweSome JS -->
-          <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-          <!-- MyScripts -->
-          <script src="javascript/main.js"></script>
-        {% endblock javascripts %}
-      </div>
-    </body>
-  </html>
+      {% endblock footer %}
+  </div>
+
+    {% block javascripts %}
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <!-- FontAweSome JS -->
+      <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+      <!-- MyScripts -->
+      <script src="javascript/main.js"></script>
+    {% endblock javascripts %}
+</div>
+</body>
+</html>

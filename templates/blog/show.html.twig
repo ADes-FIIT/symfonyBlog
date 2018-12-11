@@ -20,8 +20,9 @@
     </article>
     <hr>
     <div class="comment">
-    {% if comments is defined %}
-
+    {% if comments is empty %}
+        <h1>{{ 'comment.none'|trans }}</h1>
+    {% endif %}
         {% for comment in comments %}
                 <time datetime="{{comment.created|date('c') }}">{{ comment.created|date('l, F j, Y, G:i:s') }}</time>
                 <h3>{{ comment.author|striptags }}</h3>
@@ -30,7 +31,7 @@
                 </p>
         {% endfor %}
 
-    {% endif %}
+
     </div>
 
     <hr>

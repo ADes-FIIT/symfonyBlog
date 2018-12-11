@@ -94,6 +94,10 @@
                 <source>comment.enter</source>
                 <target>Enter comment here</target>
             </trans-unit>
+            <trans-unit id="_comment.none">
+                <source>comment.none</source>
+                <target>No recent comments</target>
+            </trans-unit>
 
 <!--|| BLOG ||-->
             <trans-unit id="_blog.send">
@@ -127,6 +131,10 @@
             <trans-unit id="_blog.tags">
                 <source>blog.tags</source>
                 <target>Enter your post's tags here</target>
+            </trans-unit>
+            <trans-unit id="_blog.none">
+                <source>blog.none</source>
+                <target>No posts yet!</target>
             </trans-unit>
 
 <!--|| LOCALE ||-->
@@ -292,7 +300,7 @@
             </trans-unit>
             <trans-unit id="_login.submit">
               <source>login.submit</source>
-              <target>Submit</target>
+              <target>Login</target>
             </trans-unit>
             <trans-unit id="__security.login.username">
               <source>__security.login.username</source>

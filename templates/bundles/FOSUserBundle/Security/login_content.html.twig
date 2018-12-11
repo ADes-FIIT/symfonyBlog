@@ -9,12 +9,12 @@
     <div class="login-container">
         <h1>{{ 'login.title'|trans({}, 'messages') }}</h1><br>
         <form>
-            <label for="username">{{ 'security.login.username'|trans }}</label>
+            <label for="username">{{ 'security.login.username'|trans({}, 'messages') }}</label>
             <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-            <label for="password">{{ 'security.login.password'|trans }}</label>
+            <label for="password">{{ 'security.login.password'|trans({}, 'messages') }}</label>
             <input type="password" id="password" name="_password" required="required" />
             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label><br><br>
+            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'messages') }}</label><br><br>
             <input type="submit" class="login login-submit" id="_submit" name="_submit" value="{{ 'login.submit'|trans({}, 'messages') }}" />
         </form>
         <div class="login-help">

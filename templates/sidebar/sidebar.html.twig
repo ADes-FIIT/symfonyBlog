@@ -17,9 +17,15 @@
     <header>
         <h3>{{ 'sidebar.comments'|trans }}</h3>
     </header>
+    {% if comments is empty %}
+        <h2>{{ 'comments.none'|trans }}</h2>
+    {% endif %}
     {% for comment in comments %}
         <p>
-            <time datetime="{{comment.created|date('c')|trans }}">{{ comment.created|date('l, F j, Y, G:i:s')|trans }}</time>
+            {% set day =  comment.created|date('l') %}
+            {% set month = comment.created|date('F') %}
+
+            <time datetime="{{comment.created|date('c')|trans }}">{{ day|trans }}, {{ month|trans }} {{  comment.created|date('j, Y, G:i:s')}}</time>
             {{ comment.author }}
             <br>
             {{ comment.comment }}

@@ -10,7 +10,7 @@ locale.slovak: Slovensky
 footer.copy: Fooooooooter
 footer.mail.username: adam.benovic
 footer.mail.domain: bootiq.io
-footer.mail.title: Mail
+footer.mail.title: ADes
 legal.terms: 'Právne informácie'
 legal.disclaimer: Hahahaha
 legal.privacy: Súkromie
@@ -30,7 +30,7 @@ login.register: Registrovať
 login.title: 'Prihlásiť sa'
 login.register.title: 'Registrovať nový účet'
 login.forgot.password: 'Zabudnuté heslo'
-login.submit: Odoslať
+login.submit: Prihlásiť
 admin.panel: 'Administrátorské nastavenia'
 add.title: 'Zadajte titulok'
 add.body: 'Napíšte príspevok'
@@ -54,7 +54,7 @@ Password: Heslo
 Roles: Role
 0: '0'
 role.admin: Administrátor
-blog.none: __blog.none
+blog.none: 'Zatiaľ žiadne príspevky'
 comment.add: 'Pridajte komentár'
 comment.send: Komentovať
 search.input: 'Zadajte dotaz'
@@ -63,3 +63,34 @@ home.readmore: 'Čítať viac'
 sidebar.add: 'Pridať oznámenie'
 comment.enter: 'Sem napíšte komentár'
 blgo.title: __blgo.title
+blog.readmore: 'Čítať viac'
+blog.title: 'Sem zadajte nadpis vášho príspevku'
+blog.body: 'Sem zadajte váš príspevok'
+blog.tags: 'Sem zadajte tagy vášho príspevku'
+comment.none: 'Žiadne nedávne komentáre'
+comments.none: __comments.none
+Monday: Pondelok
+Tuesday: Utorok
+January: Január
+December: December
+Wednesday: Streda
+Thrusday: Štvrtok
+Friday: Piatok
+Saturday: Sobota
+Sunday: Nedeľa
+February: Február
+March: Marec
+April: Apríl
+May: Máj
+Jun: Jún
+July: Júl
+August: August
+September: September
+October: Október
+November: November
+security.login.username: 'Používateľské meno'
+security.login.password: Heslo
+security.login.remember_me: 'Pamätať si ma'
+comment.login: 'Pre pridanie komentáru musíte byť registrovaný!'
+_form.success: 'Vaša správa bola úspešne odoslaná. Ďakujem!'
+form.success: 'Vaša správa bola úspešne odoslaná. Ďakujem!'

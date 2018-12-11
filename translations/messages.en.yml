@@ -42,7 +42,7 @@ login.register: Register
 login.title: 'Login to Your Account'
 login.register.title: 'Register a New Account'
 login.forgot.password: 'Forgot Password'
-login.submit: Submit
+login.submit: Login
 nav.add: 'Add post'
 add.title: 'Enter title here'
 add.body: 'Enter post here'
@@ -54,7 +54,7 @@ blog.send: Save
 blog.delete: 'Delete post'
 blog.edit: 'Edit post'
 blog.edit.title: Edit
-blog.none: __blog.none
+blog.none: 'No posts yet!'
 comment.add: 'Add comment'
 comment.send: Comment
 login.username: Username
@@ -72,3 +72,9 @@ home.readmore: 'Read more'
 sidebar.add: 'Add announcement'
 comment.enter: 'Enter comment here'
 blgo.title: __blgo.title
+comment.none: 'No recent comments'
+blog.readmore: 'Read more'
+blog.title: 'Enter your post''s title here'
+blog.body: 'Enter your post''s body here'
+blog.tags: 'Enter your post''s tags here'
+comments.none: __comments.none

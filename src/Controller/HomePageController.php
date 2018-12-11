@@ -1,27 +1,32 @@
 <?php
-// src/controller/HomePageController.php
+
 namespace App\Controller;
 
 use App\Service\PostsLoading;
 use App\Service\FormHandler;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\Contact;
-use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\BlogRepository;
 
 class HomePageController extends Controller
 {
+    private $formHandler;
+    private $postLoading;
+
+    public function __construct(
+        FormHandler $formHandler,
+        PostsLoading $postLoading
+    ){
+        $this->formHandler = $formHandler;
+        $this->postLoading = $postLoading;
+    }
+
     /**
      * @Route("/", name="homepage")
      */
-    public function index(PostsLoading $loading)
+    public function index()
     {
-        $blogs = $loading->loadHomepage();
-        if (!$blogs) {
-            throw $this->createNotFoundException('Unable to find Blog post/s.');
-        }
+        $blogs = $this->postLoading->loadHomepagePosts();
 
         return $this->render('homepage/index.html.twig', [
             'blogs' => $blogs
@@ -39,29 +44,14 @@ class HomePageController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(Request $request, FormHandler $formHandler)
+    public function contact(Request $request)
     {
-        $enquiry = new Contact();
-        $form = $this->createForm(ContactType::class, $enquiry);
+        $form = $this->formHandler->contactForm($request);
 
-        $this->request = $request;
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
+        if($form === null)
+            return $this->redirect('contact');
 
-            if ($form->isValid()) {
-                $message = (new \Swift_Message('Contact enquiry from Example'))
-                    ->setFrom('contact@example.com')
-                    ->setTo($this->container->getParameter('app.emails.contact_email'))
-                    ->setBody($this->renderView('contact/contactEmail.txt.twig', array('enquiry' => $enquiry)));
-                $this->get('mailer')->send($message);
-
-                $this->addFlash('notice', "Your contact enquiry was successfully sent. Thank you!");
-
-                return $this->redirect($this->generateUrl('contact'));
-            }
-        }
-
-        return $this->render('contact/contact.html.twig', array(
+        return $page = $this->render('contact/contact.html.twig', array(
             'form' => $form->createView()
         ));
     }
@@ -70,19 +60,11 @@ class HomePageController extends Controller
      * @Route("/search", name="search")
      */
     public function search(Request $request) {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('App:Blog');
-        $title = $request->get('q');
+        $blogs = $this->postLoading->loadSearchPosts($request);
 
-        $blogs = $repo->searchBlogs($title);
-
-        if (!$blogs) {
-            return $this->render('search/search.html.twig');
-        }
-
-        return $this->render('search/search.html.twig', [
-            'blogs'      => $blogs
-        ]);
+        return $this->render('search/search.html.twig', array(
+            'blogs' => $blogs
+        ));
     }
 
     /**
@@ -90,9 +72,7 @@ class HomePageController extends Controller
      */
     public function sidebar()
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('App:Comment');
-        $comments= $repo->getCommentsForHomepage();
+        $comments = $this->postLoading->loadSidebarComments();
 
         return $this->render('sidebar/sidebar.html.twig', array(
             'comments' => $comments

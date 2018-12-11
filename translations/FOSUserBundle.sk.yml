@@ -16,6 +16,3 @@ resetting.email.message: __resetting.email.message
 resetting.request.username: __resetting.request.username
 resetting.request.submit: __resetting.request.submit
 resetting.reset.submit: __resetting.reset.submit
-security.login.username: __security.login.username
-security.login.password: __security.login.password
-security.login.remember_me: __security.login.remember_me
