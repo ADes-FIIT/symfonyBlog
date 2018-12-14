@@ -15,10 +15,10 @@ class HomePageController extends Controller
 
     public function __construct(
         FormHandler $formHandler,
-        PostsLoading $postLoading
+        PostsLoading $postsLoading
     ){
         $this->formHandler = $formHandler;
-        $this->postLoading = $postLoading;
+        $this->postLoading = $postsLoading;
     }
 
     /**

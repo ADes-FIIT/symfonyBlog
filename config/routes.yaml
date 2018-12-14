@@ -3,4 +3,4 @@
 #    controller: App\Controller\DefaultController::index
 
 fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing_41/all.xml"
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
