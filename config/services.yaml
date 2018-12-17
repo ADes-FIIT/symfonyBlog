@@ -6,7 +6,7 @@
 parameters:
     locale: en
     app.locale: en|sk
-    app.emails.contact_email: adam.benovic@bootiq.io
+    app.contact_email: adam.benovic@bootiq.io
 
 services:
     # default configuration for services in *this* file
@@ -19,13 +19,15 @@ services:
     App\Controller\HomePageController:
         public: true
         arguments:
-            $formHandler: '@app.form_handler'
-            $postsLoading: '@app.posts_loading'
+            $contactHandler: '@App\Handler\ContactFormHandler'
+            $dbService: '@App\Service\DatabaseService'
     App\Controller\BlogController:
         public: true
         arguments:
-            $formHandler: '@app.form_handler'
-            $postsLoading: '@app.posts_loading'
+            $dbService: '@App\Service\DatabaseService'
+            $commentHandler: '@App\Handler\CommentFormHandler'
+            $addPostHandler: '@App\Handler\AddPostFormHandler'
+            $editPostHandler: '@App\Handler\EditPostFormHandler'
         tags: ['controller.service_arguments']
     App\Controller\LocaleSwitchController:
         public: true
@@ -44,29 +46,49 @@ services:
             - 'doctrine.repository_service'
 
     #listeners
-    app.locale_listener:
-        class: App\EventListener\LocaleListener
+    App\EventListener\LocaleListener:
         arguments: ["%kernel.default_locale%"]
         tags:
             - { name: kernel.event_subscriber }
 
     #handlers
-    app.form_handler:
-        class: App\Service\FormHandler
+    App\Handler\AddPostFormHandler:
+        arguments:
+            $formFactory: '@form.factory'
+            $security: '@security.helper'
+            $blogRepo: '@App\Repository\BlogRepository'
+        tags:
+            - { name: add_post_handler }
+    App\Handler\CommentFormHandler:
         arguments:
             $formFactory: '@form.factory'
             $flashBag: '@session.flash_bag'
-            $mailer: '@swiftmailer.mailer.default'
-            $twig: '@templating.engine.twig'
-            $params: '@parameter_bag'
             $security: '@security.helper'
-            $postsLoading: '@app.posts_loading'
+            $commentRepo: '@App\Repository\CommentRepository'
         tags:
-            - { name: form_handler }
-    app.posts_loading:
-        class: App\Service\PostsLoading
+            - { name: comment_handler }
+    App\Handler\ContactFormHandler:
         arguments:
-            $em: '@doctrine.orm.default_entity_manager'
-            $security: '@security.helper'
+            $formFactory: '@form.factory'
+            $flashBag: '@session.flash_bag'
+            $mailer: '@Swift_Mailer'
+            $twig: '@templating'
+            $mailTo: '%app.contact_email%'
         tags:
-            - { name: posts_loading }
+            - { name: contact_handler }
+    App\Handler\EditPostFormHandler:
+        arguments:
+            $formFactory: '@form.factory'
+            $blogRepo: '@App\Repository\BlogRepository'
+        tags:
+            - { name: edit_post_handler }
+
+    #services
+    App\Service\DatabaseService:
+        arguments:
+            $em: '@Doctrine\ORM\EntityManagerInterface'
+            $security: '@security.helper'
+            $blogRepo: '@App\Repository\BlogRepository'
+            $commentRepo: '@App\Repository\CommentRepository'
+        tags:
+            - { name: db_service }

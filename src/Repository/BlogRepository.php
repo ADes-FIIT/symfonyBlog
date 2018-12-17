@@ -4,16 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Blog;
 use App\Entity\User;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method Blog|null find($id, $lockMode = null, $lockVersion = null)
- * @method Blog|null findOneBy(array $criteria, array $orderBy = null)
- * @method Blog[]    findAll()
- * @method Blog[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class BlogRepository extends ServiceEntityRepository
+class BlogRepository extends BaseRepository
 {
     public function __construct(RegistryInterface $registry)
     {
@@ -21,16 +14,19 @@ class BlogRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return Blog[] Returns an array of Blog objects
-    */
-    public function loadBlogs() {
+     * @return Blog[] Returns an array of Blog objects
+     */
+    public function loadBlogs() :array
+    {
         return $this->findBy(array(), array('id' => 'DESC'));
     }
 
-
-    public function findUserBlogs(
-        User $user
-    ) {
+    /**
+     * @param User $user
+     * @return Blog[] Returns an array of Blog objects
+     */
+    public function findUserBlogs(User $user) :array
+    {
         return $this->createQueryBuilder('a')
             ->andWhere('a.author = :val')
             ->setParameter('val', $user)
@@ -40,7 +36,12 @@ class BlogRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findBlogById($id): ?Blog
+    /**
+     * @param int $id ID of post to be found
+     * @return Blog Returns one blog object or null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findBlogById(int $id): ?Blog
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.id= :val')
@@ -50,9 +51,12 @@ class BlogRepository extends ServiceEntityRepository
             ;
     }
 
-    public function searchBlogs(
-        String $title
-    ) {
+    /**
+     * @param String $title Title to search for
+     * @return Blog[] Returns an array of Blog objects
+     */
+    public function searchBlogs(String $title): array
+    {
         $title = $this->sanitizeSearchQuery($title);
         $searchTerms = $this->extractSearchTerms($title);
 
@@ -73,17 +77,20 @@ class BlogRepository extends ServiceEntityRepository
     }
 
     /**
-     * Removes all non-alphanumeric characters except whitespaces.
+     * @param String $query String to be sanitized
+     * @return String Removed all non-alphanumeric characters except whitespaces.
      */
-    private function sanitizeSearchQuery(string $query): string
+    private function sanitizeSearchQuery(String $query): String
     {
         return trim(preg_replace('/[[:space:]]+/', ' ', $query));
     }
 
     /**
      * Splits the search query into terms and removes the ones which are irrelevant.
+     * @param String $searchQuery
+     * @return array String split to words w length > 2
      */
-    private function extractSearchTerms(string $searchQuery): array
+    private function extractSearchTerms(String $searchQuery): array
     {
         $terms = array_unique(explode(' ', $searchQuery));
 
@@ -91,16 +98,4 @@ class BlogRepository extends ServiceEntityRepository
             return 2 <= mb_strlen($term);
         });
     }
-
-    /*
-    public function findOneBySomeField($value): ?Blog
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

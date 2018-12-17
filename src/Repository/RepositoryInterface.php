@@ -3,10 +3,20 @@
 
 namespace App\Repository;
 
-
-class RepositoryInterface
+interface RepositoryInterface
 {
-    public function save($entity) {
+    /**
+     * @param mixed $entity
+     */
+    public function saveWpersist($entity);
 
-    }
+    /**
+     * @param mixed $entity
+     */
+    public function save($entity);
+
+    /**
+     * @param mixed $entity
+     */
+    public function remove($entity);
 }

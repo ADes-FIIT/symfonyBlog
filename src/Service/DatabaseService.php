@@ -4,25 +4,28 @@ namespace App\Service;
 
 use App\Entity\Blog;
 use App\Repository\BlogRepository;
+use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 
-/**
- * Class PostsLoading
- * @package App\Service
- */
-class PostsLoading
+class DatabaseService
 {
     private $em;
     private $security;
+    private $commentRepo;
+    private $blogRepo;
 
     public function __construct(
         EntityManagerInterface $em,
-        Security $security
+        Security $security,
+        BlogRepository $blogRepo,
+        CommentRepository $commentRepo
     ){
         $this->em = $em;
         $this->security = $security;
+        $this->commentRepo = $commentRepo;
+        $this->blogRepo = $blogRepo;
     }
 
     public function loadHomepagePosts ()
@@ -65,12 +68,6 @@ class PostsLoading
         return $comments;
     }
 
-    public function myPersist($object)
-    {
-        $this->em->persist($object);
-        $this->em->flush();
-    }
-
     public function loadMyPosts(){
         $repo = $this->em->getRepository('App:Blog');
         $blogs = $repo->findUserBlogs($this->security->getUser());
@@ -85,21 +82,15 @@ class PostsLoading
         return $blog;
     }
 
-    public function myFlush() {
-        $this->em->flush();
-    }
-
     public function deleteMyPost($id) {
         $repo = $this->em->getRepository('App:Blog');
         $blog = $repo->findBlogById($id);
-        $this->em->remove($blog);
+        $this->blogRepo->remove($blog);
 
         $repo = $this->em->getRepository('App:Comment');
         $comments = $repo->getCommentsForBlog($id);
         foreach ($comments as $comment) {
-            $this->em->remove($comment);
+            $this->commentRepo->remove($comment);
         }
-
-        $this->em->flush();
     }
 }

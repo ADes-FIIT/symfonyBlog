@@ -3,24 +3,21 @@
 namespace App\Repository;
 
 use App\Entity\Comment;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
- * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
- * @method Comment[]    findAll()
- * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class CommentRepository extends ServiceEntityRepository
+class CommentRepository extends BaseRepository
 {
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Comment::class);
     }
 
-
-    public function getCommentsForBlog($blog) {
+    /**
+     * @param $blog
+     * @return Comment[] Array of comments associated to blog
+     */
+    public function getCommentsForBlog($blog): array
+    {
         return $this->createQueryBuilder('a')
             ->andWhere('a.blog = :val')
             ->setParameter('val', $blog)
@@ -30,7 +27,11 @@ class CommentRepository extends ServiceEntityRepository
             ;
     }
 
-    public function getCommentsForHomepage() {
+    /**
+     * @return Comment[] Array of comments for homepage
+     */
+    public function getCommentsForHomepage(): array
+    {
         return $this->createQueryBuilder('a')
             ->orderBy('a.id', 'DESC')
             ->setMaxResults(10)
@@ -38,33 +39,4 @@ class CommentRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
-
-    // /**
-    //  * @return Comment[] Returns an array of Comment objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Comment
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

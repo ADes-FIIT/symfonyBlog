@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Service\PostsLoading;
+use App\Handler\ContactFormHandler;
+use App\Service\DatabaseService;
 use App\Service\FormHandler;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,15 +11,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class HomePageController extends Controller
 {
-    private $formHandler;
-    private $postLoading;
+    private $dbService;
+    private $contactHandler;
 
     public function __construct(
-        FormHandler $formHandler,
-        PostsLoading $postsLoading
+        ContactFormHandler $contactHandler,
+        DatabaseService $dbService
     ){
-        $this->formHandler = $formHandler;
-        $this->postLoading = $postsLoading;
+        $this->dbService = $dbService;
+        $this->contactHandler = $contactHandler;
     }
 
     /**
@@ -26,7 +27,7 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        $blogs = $this->postLoading->loadHomepagePosts();
+        $blogs = $this->dbService->loadHomepagePosts();
 
         return $this->render('homepage/index.html.twig', [
             'blogs' => $blogs
@@ -46,7 +47,7 @@ class HomePageController extends Controller
      */
     public function contact(Request $request)
     {
-        $form = $this->formHandler->contactForm($request);
+        $form = $this->contactHandler->handle($request);
 
         if($form === null)
             return $this->redirect('contact');
@@ -60,7 +61,7 @@ class HomePageController extends Controller
      * @Route("/search", name="search")
      */
     public function search(Request $request) {
-        $blogs = $this->postLoading->loadSearchPosts($request);
+        $blogs = $this->dbService->loadSearchPosts($request);
 
         return $this->render('search/search.html.twig', array(
             'blogs' => $blogs
@@ -72,7 +73,7 @@ class HomePageController extends Controller
      */
     public function sidebar()
     {
-        $comments = $this->postLoading->loadSidebarComments();
+        $comments = $this->dbService->loadSidebarComments();
 
         return $this->render('sidebar/sidebar.html.twig', array(
             'comments' => $comments

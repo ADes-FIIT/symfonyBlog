@@ -1,33 +1,32 @@
 <?php
 
-// src/Controller/BlogController.php
-
 namespace App\Controller;
 
-use App\Entity\Blog;
-use App\Form\BlogPostFormType;
-use App\Form\CommentType;
-use App\Entity\Comment;
-use App\Service\FormHandler;
-use App\Service\PostsLoading;
+use App\Handler\AddPostFormHandler;
+use App\Handler\CommentFormHandler;
+use App\Handler\EditPostFormHandler;
+use App\Service\DatabaseService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Blog controller.
- */
 class BlogController extends Controller
 {
-    private $postsLoading;
-    private $formHandler;
+    private $dbService;
+    private $commentHandler;
+    private $addPostHandler;
+    private $editPostHandler;
 
     public function __construct(
-        PostsLoading $postsLoading,
-        FormHandler $formHandler
+        DatabaseService $dbService,
+        CommentFormHandler $commentHandler,
+        AddPostFormHandler $addPostHandler,
+        EditPostFormHandler $editPostHandler
     ){
-        $this->postsLoading = $postsLoading;
-        $this->formHandler = $formHandler;
+        $this->dbService = $dbService;
+        $this->commentHandler = $commentHandler;
+        $this->addPostHandler = $addPostHandler;
+        $this->editPostHandler = $editPostHandler;
     }
 
     /**
@@ -35,9 +34,9 @@ class BlogController extends Controller
      */
     public function show(Request $request, $pageid)
     {
-        $blog = $this->postsLoading->loadShowPost($pageid);
-        $comments = $this->postsLoading->loadShowComments($pageid);
-        $form = $this->formHandler->commentForm($request, $blog);
+        $blog = $this->dbService->loadShowPost($pageid);
+        $comments = $this->dbService->loadShowComments($pageid);
+        $form = $this->commentHandler->handle($request, $blog);
 
         if ($form == null)
             return $this->redirect($this->generateUrl('showblog', ['pageid' => $pageid]));
@@ -55,7 +54,7 @@ class BlogController extends Controller
      */
     public function post(Request $request)
     {
-        $form = $this->formHandler->addPostForm($request);
+        $form = $this->addPostHandler->handle($request);
 
         if ($form === null)
                 return $this->redirect($this->generateUrl('myposts'));
@@ -70,7 +69,7 @@ class BlogController extends Controller
      */
     public function myPosts()
     {
-        $blogs = $this->postsLoading->loadMyPosts();
+        $blogs = $this->dbService->loadMyPosts();
 
         return $this->render('blog/myposts.html.twig', [
             'blogs' => $blogs,
@@ -82,8 +81,8 @@ class BlogController extends Controller
      */
     public function editMyPost(Request $request, $id)
     {
-        $blog = $this->postsLoading->loadEditPost($id);
-        $form = $this->formHandler->editPostForm($request, $blog);
+        $blog = $this->dbService->loadEditPost($id);
+        $form = $this->editPostHandler->handle($request, $blog);
 
         if ($form === null)
             return $this->redirect($this->generateUrl('myposts'));
@@ -99,7 +98,7 @@ class BlogController extends Controller
      */
     public function deleteMyPost($id)
     {
-        $this->postsLoading->deleteMyPost($id);
+        $this->dbService->deleteMyPost($id);
 
         return $this->redirect('/myposts');
     }
