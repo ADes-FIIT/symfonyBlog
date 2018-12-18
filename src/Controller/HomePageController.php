@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Handler\ContactFormHandler;
 use App\Service\DatabaseService;
-use App\Service\FormHandler;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +23,7 @@ class HomePageController extends Controller
 
     /**
      * @Route("/", name="homepage")
+     * @return mixed rendered page
      */
     public function index()
     {
@@ -36,6 +36,7 @@ class HomePageController extends Controller
   
     /**
      * @Route("/about", name="about")
+     * @return mixed rendered page
      */
     public function about()
     {
@@ -44,6 +45,8 @@ class HomePageController extends Controller
 
     /**
      * @Route("/contact", name="contact")
+     * @param Request $request The one and only request
+     * @return mixed rendered page
      */
     public function contact(Request $request)
     {
@@ -52,13 +55,15 @@ class HomePageController extends Controller
         if($form === null)
             return $this->redirect('contact');
 
-        return $page = $this->render('contact/contact.html.twig', array(
+        return $this->render('contact/contact.html.twig', array(
             'form' => $form->createView()
         ));
     }
   
     /**
      * @Route("/search", name="search")
+     * @param Request $request The one and only request
+     * @return mixed rendered page
      */
     public function search(Request $request) {
         $blogs = $this->dbService->loadSearchPosts($request);
@@ -70,6 +75,7 @@ class HomePageController extends Controller
 
     /**
      * @Route("/sidebar", name="sidebar")
+     * @return mixed rendered page
      */
     public function sidebar()
     {

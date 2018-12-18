@@ -1,7 +1,6 @@
-{# templates/contact/contactEmail.txt.twig #}
-A contact enquiry was made by {{ enquiry.name }} at {{ "now" | date("Y-m-d H:i") }}.
-
+Name: {{ enquiry.name }}
+Time: {{ "now" | date("d.m.Y H:i:s") }}
 Reply-To: {{ enquiry.email }}
 Subject: {{ enquiry.subject }}
-Body:
+Message:
 {{ enquiry.body }}

@@ -30,19 +30,22 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("/{pageid}", name="showblog", requirements={"pageid"="\d+"})
+     * @Route("/{id}", name="showblog", requirements={"id"="\d+"})
+     * @param Request $request The one and only request
+     * @param integer $id part of the route
+     * @return mixed rendered page
      */
-    public function show(Request $request, $pageid)
+    public function show(Request $request, int $id)
     {
-        $blog = $this->dbService->loadShowPost($pageid);
-        $comments = $this->dbService->loadShowComments($pageid);
+        $blog = $this->dbService->loadShowPost($id);
+        $comments = $this->dbService->loadShowComments($id);
         $form = $this->commentHandler->handle($request, $blog);
 
         if ($form == null)
-            return $this->redirect($this->generateUrl('showblog', ['pageid' => $pageid]));
+            return $this->redirect($this->generateUrl('showblog', ['pageid' => $id]));
 
         return $this->render('blog/show.html.twig', [
-            'pageid' => $pageid,
+            'id' => $id,
             'blog' => $blog,
             'comments' => $comments,
             'form' => $form->createView(),
@@ -51,6 +54,8 @@ class BlogController extends Controller
 
     /**
      * @Route("/add", name="add")
+     * @param Request $request The one and only request
+     * @return mixed rendered page
      */
     public function post(Request $request)
     {
@@ -66,6 +71,7 @@ class BlogController extends Controller
 
     /**
      * @Route("/myposts", name="myposts")
+     * @return mixed rendered page
      */
     public function myPosts()
     {
@@ -78,8 +84,11 @@ class BlogController extends Controller
 
     /**
      * @Route("/edit/{id}", name="editmypost", requirements={"id"="\d+"})
+     * @param Request $request The one and only request
+     * @param integer $id part of the route
+     * @return mixed rendered page
      */
-    public function editMyPost(Request $request, $id)
+    public function editMyPost(Request $request, int $id)
     {
         $blog = $this->dbService->loadEditPost($id);
         $form = $this->editPostHandler->handle($request, $blog);
@@ -95,8 +104,10 @@ class BlogController extends Controller
 
     /**
      * @Route("/delete/{id}", name="deletemypost", requirements={"id"="\d+"})
+     * @param integer $id part of the route
+     * @return mixed redirect to users posts
      */
-    public function deleteMyPost($id)
+    public function deleteMyPost(int $id)
     {
         $this->dbService->deleteMyPost($id);
 

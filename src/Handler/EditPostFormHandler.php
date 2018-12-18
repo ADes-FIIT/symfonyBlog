@@ -2,7 +2,6 @@
 
 namespace App\Handler;
 
-
 use App\Entity\Blog;
 use App\Repository\BlogRepository;
 use App\Form\BlogPostFormType;

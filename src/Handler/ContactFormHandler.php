@@ -2,9 +2,9 @@
 
 namespace App\Handler;
 
-use App\Entity\Contact;
+use App\Factory\EntityFactory;
+use App\Factory\MessageFactory;
 use App\Form\ContactType;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
@@ -14,40 +14,37 @@ class ContactFormHandler
 {
     private $formFactory;
     private $flashBag;
-    private $twig;
     private $mailer;
-    private $mailTo;
+    private $entityFactory;
+    private $messageFactory;
 
     public function __construct(
         FormFactoryInterface $formFactory,
         FlashBagInterface $flashBag,
         \Swift_Mailer $mailer,
-        EngineInterface $twig,
-        String $mailTo
+        EntityFactory $entityFactory,
+        MessageFactory $messageFactory
     ){
         $this->formFactory = $formFactory;
         $this->flashBag = $flashBag;
-        $this->twig = $twig;
         $this->mailer = $mailer;
-        $this->mailTo = $mailTo;
+        $this->entityFactory = $entityFactory;
+        $this->messageFactory = $messageFactory;
     }
 
     public function handle(Request $request)
     {
-        $enquiry = new Contact();
-        $form = $this->formFactory->create(ContactType::class, $enquiry);
+        $contact = $this->entityFactory->createContact();
+        $form = $this->formFactory->create(ContactType::class, $contact);
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $message = (new \Swift_Message('I am contacting you'))
-                    ->setFrom('contact@example.com')
-                    ->setTo($this->mailTo)
-                    ->setBody($this->twig->render('contact/contactEmail.txt.twig', array('enquiry' => $enquiry)));
+                $message = $this->messageFactory->createContactMail($contact);
                 $this->mailer->send($message);
-
                 $this->flashBag->add('notice', "form.success");
+
                 return null;
             }
         }

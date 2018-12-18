@@ -55,16 +55,16 @@ services:
     App\Handler\AddPostFormHandler:
         arguments:
             $formFactory: '@form.factory'
-            $security: '@security.helper'
             $blogRepo: '@App\Repository\BlogRepository'
+            $factory: '@App\Factory\EntityFactory'
         tags:
             - { name: add_post_handler }
     App\Handler\CommentFormHandler:
         arguments:
             $formFactory: '@form.factory'
             $flashBag: '@session.flash_bag'
-            $security: '@security.helper'
             $commentRepo: '@App\Repository\CommentRepository'
+            $factory: '@App\Factory\EntityFactory'
         tags:
             - { name: comment_handler }
     App\Handler\ContactFormHandler:
@@ -72,8 +72,8 @@ services:
             $formFactory: '@form.factory'
             $flashBag: '@session.flash_bag'
             $mailer: '@Swift_Mailer'
-            $twig: '@templating'
-            $mailTo: '%app.contact_email%'
+            $entityFactory: '@App\Factory\EntityFactory'
+            $messageFactory: '@App\Factory\MessageFactory'
         tags:
             - { name: contact_handler }
     App\Handler\EditPostFormHandler:
@@ -92,3 +92,16 @@ services:
             $commentRepo: '@App\Repository\CommentRepository'
         tags:
             - { name: db_service }
+
+    #factories
+    App\Factory\EntityFactory:
+        arguments:
+            $security: '@security.helper'
+        tags:
+            - { name: entity_factory }
+    App\Factory\MessageFactory:
+        arguments:
+            $mailTo: '%app.contact_email%'
+            $twig: '@templating'
+        tags:
+            - { name: message_factory }

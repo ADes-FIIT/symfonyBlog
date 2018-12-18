@@ -35,13 +35,15 @@
   <!--|| Locale Switch ||-->
   <br/>
   <div class="row">
+      {{ app.session.set('prevRoute', path(app.request.attributes.get('_route'),
+          app.request.attributes.get('_route_params'))) }}
     <div class="col-xs-3 col-sm-1 col-md-1 col-xs-offset-6 col-sm-offset-10 col-md-offset-10">
-      <a href="/switchenglish" class="thumbnail">
+      <a href="/switch/en" class="thumbnail">
         <img src="{{ asset('images/flags/us.png') }}" alt="english">
       </a>
     </div>
     <div class="col-xs-3 col-sm-1 col-md-1">
-      <a href="/switchslovak" class="thumbnail">
+      <a href="/switch/sk" class="thumbnail">
         <img src="{{ asset('images/flags/sk.png') }}" alt="slovak">
       </a>
     </div>

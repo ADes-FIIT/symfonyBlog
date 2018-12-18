@@ -4,27 +4,15 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class LocaleSwitchController extends AbstractController {
 
     /**
-     * @Route("/switchenglish", name="switch_language_english")
+     * @Route("/switch/{locale}", name="switch_language", defaults={"locale"="en"}, requirements={"locale"="en|sk"})
      */
-    public function switchLanguageEnglishAction() {
-        return $this->switchLanguage('en');
-    }
-
-    /**
-     * @Route("/switchslovak", name="switch_language_slovak")
-     */
-    public function switchLanguageSlovakAction() {
-        return $this->switchLanguage('sk');
-    }
-
-    private function switchLanguage($locale) {
+    public function switchLanguage(String $locale) {
         $this->get('session')->set('_locale', $locale);
-        return $this->redirect($this->generateUrl('homepage'));
+        return $this->redirect($this->get('session')->get('prevRoute'));
     }
-
 }
