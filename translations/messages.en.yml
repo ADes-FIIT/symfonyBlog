@@ -48,7 +48,7 @@ add.title: 'Enter title here'
 add.body: 'Enter post here'
 add.send: 'Send post'
 nav.my: 'My posts'
-sidebar.announcements: Announcements
+sidebar.announcements: Announcement
 sidebar.comments: Comments
 blog.send: Save
 blog.delete: 'Delete post'
