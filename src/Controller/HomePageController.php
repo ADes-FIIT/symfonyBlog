@@ -85,4 +85,13 @@ class HomePageController extends Controller
             'comments' => $comments
         ));
     }
+
+    /**
+     * @Route("/game", name="game")
+     * @return mixed rendered page
+     */
+    public function game()
+    {
+        return $this->render('game/game.html.twig');
+    }
 }

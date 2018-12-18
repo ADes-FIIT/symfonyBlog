@@ -42,6 +42,10 @@
                 <source>nav.my</source>
                 <target>My posts</target>
             </trans-unit>
+            <trans-unit id="_nav.game">
+                <source>nav.game</source>
+                <target>Game</target>
+            </trans-unit>
 
 <!--|| SEARCH ||-->
             <trans-unit id="_search.input">

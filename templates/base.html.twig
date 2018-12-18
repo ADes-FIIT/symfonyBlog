@@ -1,4 +1,3 @@
-{# templates/base.html.twig #}
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,6 +112,11 @@
                     </a>
                   </li>
                 {% endif %}
+                <li>
+                    <a href="{{ path('game') }}" style="color:#337ab7">
+                        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span> {% trans %}nav.game{% endtrans %}
+                    </a>
+                </li>
             </ul>
             <!--| Login/Logout Start-needed |-->
             <ul class="nav navbar-nav navbar-right">
@@ -150,7 +154,7 @@
     <div class="panel-body">
       <div class="container-fluid">
 
-        <!--|| The content of the Homepage will be here ||-->
+        <!--|| The content of the page will be here ||-->
         <section class="main-col">
             {% if app.session.flashBag.has('error') %}
                 {% for msg in app.session.flashBag.get('error') %}

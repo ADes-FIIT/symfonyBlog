@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arkanoid ZTIAP</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        #herne_pole {
+            display: block;
+            width: 898 px;
+            margin: 0 auto;
+            border: 2px solid #4e5766;
+        }
+        body {
+            background-color: #000000;
+        }
+    </style>
+    <script type="text/javascript" src="javascript/hra.js"></script>
+    <script type="text/javascript" src="javascript/objekty.js"></script>
+    <script type="text/javascript" src="javascript/kolizie.js"></script>
+    <script type="text/javascript" src="javascript/kreslenie.js"></script>
+    <script type="text/javascript" src="javascript/vylepsenia.js"></script>
+</head>
+<body>
+<canvas id="herne_pole" width="898" height="640" ></canvas>
+<script type="text/javascript">
+    var hra = new Hra();
+
+    window.addEventListener('click', function(e){
+        var pozMysi = Hra.pozMysi(herne_pole, e);
+        if (Hra.vtlacidle(pozMysi, Hra.startButton) && (hra.paused && !hra.posledneVykreslenie)) {
+            hra.vykresliUroven();
+        }else if (Hra.vtlacidle(pozMysi, Hra.autorButton) && (hra.paused && !hra.posledneVykreslenie)) {
+            hra.oautorovi();
+        }
+        else if (Hra.vtlacidle(pozMysi, Hra.muteButton)) {
+            if (Lopta.zvukSmrtLopty.muted || Blok.zvukZrazka.muted || Kolizia.zvukZrazkaPlosina.muted){
+                Lopta.zvukSmrtLopty.muted = false;
+                Blok.zvukZrazka.muted = false;
+                Kolizia.zvukZrazkaPlosina.muted  = false;
+            }else{
+                Lopta.zvukSmrtLopty.muted = true;
+                Blok.zvukZrazka.muted = true;
+                Kolizia.zvukZrazkaPlosina.muted  = true;
+            }
+        }
+        else return;
+    });
+
+    function pauseToggle(e) {
+        if (e.key == "Spacebar" || e.keyCode == 32 || e.key == " ") {
+            if (hra.koniec) {
+                hra.restart();
+            }
+            else if (hra.paused) {
+                hra.start();
+            }
+            else return;
+        };
+    };
+    window.addEventListener('keypress', pauseToggle);
+</script>
+</body>
+</html>
