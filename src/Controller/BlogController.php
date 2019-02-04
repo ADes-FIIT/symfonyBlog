@@ -42,7 +42,7 @@ class BlogController extends Controller
         $form = $this->commentHandler->handle($request, $blog);
 
         if ($form == null)
-            return $this->redirect($this->generateUrl('showblog', ['pageid' => $id]));
+            return $this->redirect($this->generateUrl('showblog', ['id' => $id]));
 
         return $this->render('blog/show.html.twig', [
             'id' => $id,
